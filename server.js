@@ -5,6 +5,7 @@ require("./register-babel");
  * Dependencies
  */
 var koa = require("koa");
+var c2k = require("koa-connect");
 var react = require("react");
 var passport = require("koa-passport");
 
@@ -23,10 +24,11 @@ require("./config/database")(config);
  */
 var app = module.exports = koa();
 
-app.use(function (req, res, next) {
+function addProxy(req, res, next) {
   req.proxy = "promo58.ageg.ca";
   next();
-});
+}
+app.use(c2k(addProxy));
 
 require("./config/passport")(passport);
 
