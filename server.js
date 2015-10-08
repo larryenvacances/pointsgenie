@@ -32,8 +32,8 @@ require("./src/routes")(app, passport);
 
 // Start app
 if (!module.parent) {
-  app.listen(config.app.port, "localhost", function () {
-    console.log("Server started, listening on port:", config.app.port);
-    console.log("Environment:", config.app.env);
+  var server = https.createServer(config.ssloptions, app.callback()).listen(3000, function(){
+    var host = server.address().address;
+    console.log('App listening at http://%s:8443', host);
   });
 }
