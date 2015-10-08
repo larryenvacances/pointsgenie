@@ -23,6 +23,11 @@ require("./config/database")(config);
  */
 var app = module.exports = koa();
 
+app.use(function (req, res, next) {
+  req.proxy = "promo58.ageg.ca";
+  next();
+});
+
 require("./config/passport")(passport);
 
 require("./config/koa")(app, passport);
