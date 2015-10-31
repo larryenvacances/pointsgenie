@@ -19,7 +19,7 @@
     "test-no-build": "NODE_ENV=test ./node_modules/.bin/mocha --harmony --reporter spec ./test/test-*.js",
     "wtest-no-build": "set NODE_ENV=test&& call node_modules/.bin/mocha.cmd --harmony --reporter spec test/test-*.js",
     "hot-dev-server": "webpack-dev-server --harmony --content-base public -ds --config webpack.config.js --hot --progress --colors --port 2992 --inline",
-    "build": "NODE_ENV=production webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail",
     "wbuild": "set NODE_ENV=production&& webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail"
   },
   "author": "Hugo Dozois <hugo@dozoisch.com>",
@@ -60,9 +60,7 @@
     "react-router-bootstrap": "~0.13.0",
     "superagent": "~1.2.0",
     "swig": "1.4.x",
-    "xml2js": "0.4.x"
-  },
-  "devDependencies": {
+    "xml2js": "0.4.x",
     "async": "0.9.x",
     "babel": "~5.8.23",
     "babel-core": "~5.8.23",
