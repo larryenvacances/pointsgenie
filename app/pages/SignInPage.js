@@ -35,20 +35,11 @@ const SignIn = React.createClass({
         <h1>Connexion <small>| {sitename}</small></h1>
         <Row>
           <Col md={4}>
-            {this.renderForm()}
+            {this.renderUdeSButton()}
           </Col>
           <Col md={6}>
             <p>Vous devez vous connecter pour accéder au {sitename.toLowerCase()}!</p>
             <p>Pour vous connecter avec vos identifiants de l'université, appuyez sur le bouton USherbrooke.</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={4}>
-            <ul className="otherlogins">
-              <li>
-                {this.renderUdeSButton()}
-              </li>
-            </ul>
           </Col>
         </Row>
       </div>

@@ -28,7 +28,7 @@ const PointsLog = React.createClass({
         let points = parseFloat(entry.points, 10);
         totalPoints += points;
         return (
-          <tr key={entry.id} className={points < 0 ? "negative" : undefined}>
+          <tr key={index} className={points < 0 ? "negative" : undefined}>
             <td>{entry.reason}</td>
             <td>{entry.points}</td>
           </tr>

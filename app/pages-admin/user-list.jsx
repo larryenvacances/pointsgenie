@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router/build/npm/lib";
-import { Table, Glyphicon, ModalTrigger } from "react-bootstrap";
+import { Table, Glyphicon, ModalTrigger, Button } from "react-bootstrap";
 import { sortByOrder as _sortByOrder } from "lodash";
 
 import UserStore from "../stores/user";
@@ -95,11 +95,42 @@ const AdminUserList = React.createClass({
     return _sortByOrder(users, ["isAdmin", this.state.orderBy], [false, this.state.ascending]);
   },
 
+  download(content, filename, mime) {
+    if (mime == null) mime = 'text/csv';
+
+    var blob = new Blob([content], { type: mime });
+
+    var a = document.createElement('a');
+    a.download = filename;
+    a.href = window.URL.createObjectURL(blob);
+    a.dataset.downloadurl = [mime, a.download, a.href].join(':');
+
+    var e = document.createEvent('MouseEvents');
+    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false,
+      false, false, 0, null)
+    return a.dispatchEvent(e);
+  },
+
+  exportToCSV() {
+    let csv = "cip,nom,courriel,points,isPromocard,isAdmin\n";
+    for(let user of this.state.users) {
+      csv += `${user.cip},${user.name},${user.email},${user.totalPoints},${user.promocard && user.promocard.date ? "true": "false"},${user.isAdmin}\n`;
+    }
+
+    this.download(csv, 'pointsgenie.csv', 'text/csv');
+  },
 
   render() {
     return (
       <div className="user-list">
-        <h3>Étudiants de la promotion</h3>
+        <div className="row">
+          <div className="col col-md-6">
+            <h3 style={{marginTop: "0px", marginBottom: "20px"}}>Étudiants de la promotion</h3>
+          </div>
+          <div className="col col-md-2 pull-right">
+            <Button onClick={this.exportToCSV} bsStyle="success">Export to CSV</Button>
+          </div>
+        </div>
         <SearchBar ref="searchBar" filterText={this.state.filterText} onChange={this.handleFilterChange} />
         <UserTable users={this.getFilteredUsers()}
           orderBy={this.state.orderBy} ascending={this.state.ascending}

@@ -14,7 +14,6 @@ const ProfilePage = React.createClass({
       <div className="user-info">
         <h3>Profil</h3>
         <GeneralInfo infos={user} />
-        <PasswordChange hasPassword={user.hasPassword} />
         <Promocard promocard={user.promocard} />
       </div>
     );
