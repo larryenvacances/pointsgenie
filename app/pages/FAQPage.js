@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 
 class FAQPage extends Component {
@@ -21,7 +22,7 @@ class FAQPage extends Component {
         <blockquote>Tous les horaires des évènements seront envoyés, 24 heures à l’avance, par courriel USherbrooke à toutes les personnes travaillant à l’évènement.</blockquote>
 
         <h4>À partir de quand est-il possible de postuler pour un évènement?</h4>
-        <blockquote>Pour les 5@8, la phase de postulation débutera le lundi matin 8h00 jusqu’au mercredi 12h00 (midi) la semaine courante de l’évènement.
+        <blockquote>Pour les 5@8, la phase de postulation débutera le lundi matin 8h00 jusqu’à mardi 18h la semaine courante de l’évènement.
         Pour les autres évènements, la phase débutera 1 semaine avant l’évènement.</blockquote>
       </div>
     );
