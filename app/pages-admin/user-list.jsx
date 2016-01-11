@@ -98,7 +98,7 @@ const AdminUserList = React.createClass({
   download(content, filename, mime) {
     if (mime == null) mime = 'text/csv';
 
-    var blob = new Blob([content], { type: mime });
+    var blob = new Blob(["\ufeff", content], { type: mime });
 
     var a = document.createElement('a');
     a.download = filename;
