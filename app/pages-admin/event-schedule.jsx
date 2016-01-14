@@ -55,7 +55,7 @@ const AdminEventSchedule = React.createClass({
       return null;
     }
 
-    let hours = Object.keys(schedule.hours);
+    let hours = Object.keys(schedule.hours).sort();
     let tasks = Object.keys(schedule.hours[hours[0]]);
     let users = {};
     // @TODO
