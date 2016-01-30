@@ -1,6 +1,8 @@
 "use strict";
 import React, { PropTypes } from "react";
 import { Input, Col, Row, Button } from "react-bootstrap";
+import Select from "react-select"
+import _ from "lodash";
 
 import dateHelper from "../../middlewares/date";
 
@@ -18,32 +20,74 @@ const MatchToEventForm = React.createClass({
     isSubmitting: PropTypes.bool,
   },
 
-  getFormData() {
-    let data = {};
-    for (let elem of Object.keys(this.refs)) {
-      let index = elem.indexOf("-");
-      let time = elem.substring(0, index);
-      let task = elem.substring(index + 1);
-      data[time] = data[time] || {};
-      data[time][task] = this.refs[elem].getValue();
-    };
+  getInitialState() {
+    let hours = {};
+    let tasks = {};
+    let currDate = dateHelper.clone(this.props.event.startDate);
+    while(currDate.getTime() < this.props.event.endDate.getTime()) {
+      let time = currDate.getTime();
+      hours[time] = [];
+      tasks[time] = {};
+      for(let task of this.props.event.tasks) {
+        tasks[time][task] = [];
+      }
+      currDate = dateHelper.addHours(currDate, 1);
+    }
 
-    return data;
+    return {
+      hoursSelected: hours,
+      tasksSelected: tasks
+    };
+  },
+
+  getFormData() {
+    return this.state.tasksSelected;
+  },
+
+  onSelectBoxChange(ref, val, array) {
+    let index = ref.indexOf("-");
+    let time = ref.substring(0, index);
+    let task = ref.substring(index + 1);
+    let hoursSelected = this.state.hoursSelected;
+    let tasksSelected = this.state.tasksSelected;
+    let newSelected = array.map(select => {
+      return select.value;
+    });
+
+    if (!val) {
+      let diff = _.difference(this.state.tasksSelected[time][task], newSelected);
+      for (let value of diff) {
+        let idx = hoursSelected[time].indexOf(value);
+        hoursSelected[time].splice(idx, 1);
+      }
+    } else {
+      let hourArr = hoursSelected[time];
+      hourArr.push(val);
+      hoursSelected[time] = hourArr;
+    }
+
+    tasksSelected[time] = tasksSelected[time];
+    tasksSelected[time][task] = newSelected;
+    this.setState({hoursSelected: hoursSelected, tasksSelected: tasksSelected});
   },
 
   renderSelectBox(task, users, time) {
     let options = users.map((user, index) => {
-      return (
-        <option className={user.preferenceClassName} key={user.id} value={user.id}>
-          {user.totalPoints || 0} - {user.name || user.cip}
-        </option>
-      );
+      return {value: user.id, label: `${user.totalPoints || 0} - ${user.name || user.cip} (${user.preferenceClassName})`, disabled: this.state.hoursSelected[time] && this.state.hoursSelected[time].indexOf(user.id) > -1};
     });
+
+    let values = this.state.tasksSelected[time][task];
     return (
-      <Col xs={6} md={4} key={task}>
-        <Input type="select" multiple label={task} ref={time + "-" + task} time={time} task={task}>
-          {options}
-        </Input>
+      <Col xs={6} md={6} key={task}>
+        <h3>{task}</h3>
+        <Select
+          multi
+          value={values}
+          name="form-field-name"
+          options={options}
+          ref={time + "-" + task}
+          onChange={this.onSelectBoxChange.bind(this, time + "-" + task)}
+        />
       </Col>
     );
   },

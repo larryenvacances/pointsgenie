@@ -71,15 +71,15 @@ const MatchToEventWrapper = React.createClass({
 
           // Default is this is not the users preferred task
           let modifier = 100.01;
-          let preferenceClassName = "not-preferred";
+          let preferenceClassName = "non-préférée";
           if (!application.preferredTask) {
             // The user has no preferred task at all
             modifier = 100;
-            preferenceClassName = "no-preference";
+            preferenceClassName = "";
           } else if (application.preferredTask === task) {
             // This is the user preferred task
             modifier = 99.99;
-            preferenceClassName = "preferred"
+            preferenceClassName = "préférée"
           }
           mappedApplications[hour][task].push({
             id: application.user,

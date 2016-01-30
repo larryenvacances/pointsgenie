@@ -13,7 +13,7 @@ class FAQPage extends Component {
         <blockquote>Les Points Génie permettront, en bonne partie, de payer les différents frais reliés au bal pour la promotion finissante (Photo des finissants, album, voyage de la finissante, Jonc, etc.)</blockquote>
 
         <h4>Combien vaut un Point Génie ?</h4>
-        <blockquote>La valeur d’un Point Génie sera seulement connue au mois de novembre 2015, car la valeur du Point Génie est calculée en fonction du montant total accumulé par la promotion finissante.</blockquote>
+        <blockquote>La valeur d’un Point Génie sera seulement connue au mois de novembre 2016, car la valeur du Point Génie est calculée en fonction du montant total accumulé par la promotion finissante.</blockquote>
 
         <h4>Comment les personnes travaillant pour un évènement sont-elles choisies ?</h4>
         <blockquote>Sur toutes les personnes ayant appliquées, ce sont les personnes ayant le moins de Points Génie qui seront priorisées. Le choix se fera aussi en fonction des tâches préférées.</blockquote>
