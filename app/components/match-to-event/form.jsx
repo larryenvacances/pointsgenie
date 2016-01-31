@@ -54,8 +54,10 @@ const MatchToEventForm = React.createClass({
       return select.value;
     });
 
+    console.log('val: ' + val);
     if (!val) {
       let diff = _.difference(this.state.tasksSelected[time][task], newSelected);
+      console.log('diff: ' + val);
       for (let value of diff) {
         let idx = hoursSelected[time].indexOf(value);
         hoursSelected[time].splice(idx, 1);
