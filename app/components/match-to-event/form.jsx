@@ -111,7 +111,7 @@ const MatchToEventForm = React.createClass({
         let users = this.props.getHourTaskUserList(currDate.toISOString(), tasks[i]);
         let nextDate = dateHelper.addHours(dateHelper.clone(currDate), 1);
         let className = undefined;
-        if(nextDate >= this.props.event.endDate.getTime() && i >= tasks.length - 2) {
+        if(nextDate >= this.props.event.endDate.getTime() && i >= tasks.length - (2-tasks.length%2)) {
           className = "Last-row";
         }
         row.push(this.renderSelectBox(tasks[i], users, key, className));
