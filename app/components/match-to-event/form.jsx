@@ -107,6 +107,7 @@ const MatchToEventForm = React.createClass({
     while(currDate.getTime() < this.props.event.endDate.getTime()) {
       let key = currDate.getTime();
       let row = [];
+      let cur = [];
       for (let i = 0; i < tasks.length; ++i) {
         let users = this.props.getHourTaskUserList(currDate.toISOString(), tasks[i]);
         let nextDate = dateHelper.addHours(dateHelper.clone(currDate), 1);
@@ -114,11 +115,19 @@ const MatchToEventForm = React.createClass({
         if(nextDate >= this.props.event.endDate.getTime() && i >= tasks.length - (2-tasks.length%2)) {
           className = "Last-row";
         }
-        row.push(this.renderSelectBox(tasks[i], users, key, className));
+        cur.push(this.renderSelectBox(tasks[i], users, key, className));
+        if(cur.length > 1) {
+          row.push(<Row>{cur}</Row>);
+          cur = [];
+        }
+      }
+
+      if(cur.length > 0) {
+        row.push(<Row>{cur}</Row>);
       }
       rows.push(
         <Input key={currDate.getTime()} label={currDate.toLocaleString()} wrapperClassName="wrapper">
-          <Row>{row}</Row>
+          {row}
         </Input>
       );
 
