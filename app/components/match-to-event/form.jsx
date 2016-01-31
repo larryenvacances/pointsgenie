@@ -50,22 +50,20 @@ const MatchToEventForm = React.createClass({
     let task = ref.substring(index + 1);
     let hoursSelected = this.state.hoursSelected;
     let tasksSelected = this.state.tasksSelected;
-    let newSelected = array.map(select => {
-      return select.value;
-    });
+    let newSelected = val.split(',');
 
-    console.log('val: ' + val);
-    if (!val) {
+    if(this.state.tasksSelected[time][task].length > newSelected.length)
+    {
       let diff = _.difference(this.state.tasksSelected[time][task], newSelected);
-      console.log('diff: ' + val);
-      for (let value of diff) {
+      for(let value of diff) {
         let idx = hoursSelected[time].indexOf(value);
         hoursSelected[time].splice(idx, 1);
       }
     } else {
-      let hourArr = hoursSelected[time];
-      hourArr.push(val);
-      hoursSelected[time] = hourArr;
+      let diff = _.difference(newSelected, this.state.tasksSelected[time][task]);
+      for(let value of diff) {
+        hoursSelected[time].push(value);
+      }
     }
 
     tasksSelected[time] = tasksSelected[time];
