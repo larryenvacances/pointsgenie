@@ -57,6 +57,7 @@ module.exports = function (app, passport) {
 
   adminRouter.put("/events/:id", eventController.update);
   adminRouter.post("/schedules/:eventId", scheduleController.allocateTasks);
+  adminRouter.del("/schedules/:eventId", scheduleController.deleteSchedule);
   adminRouter.get("/schedules/:eventId", scheduleController.getForEvent);
 
 

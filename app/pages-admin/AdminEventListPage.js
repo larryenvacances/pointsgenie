@@ -2,6 +2,7 @@ import React, { PropTypes } from "react";
 import { RouteHandler, Link } from "react-router/build/npm/lib";
 import { Table, Glyphicon } from "react-bootstrap";
 import { sortByOrder as _sortByOrder } from "lodash"
+import request from "../middlewares/request";
 
 import connectToStore from "flummox/connect";
 
@@ -26,6 +27,16 @@ const AdminEventList = React.createClass({
     );
   },
 
+  restartSchedule(event) {
+    let url = `/schedules/${event.id}`;
+    request.del(url, (err, res) => {
+      if (err || res.status !== 200) { return;  }
+
+      this.context.flux.getActions("event").fetchEvent(id)
+        .then(() => this.context.router.transitionTo("/"));
+    });
+  },
+
   renderUpdateEventLink(event) {
     if (event.isClosed) {
       return event.name;
@@ -45,6 +56,14 @@ const AdminEventList = React.createClass({
   renderEventScheduleLink(event) {
     if (event.isClosed) {
       return (<li><Link to="event-schedule" params={{id:event.id}}>Voir l'horaire</Link></li>);
+    } else {
+      return undefined;
+    }
+  },
+
+  renderEventRestartScheduleLink(event) {
+    if (event.isClosed) {
+      return (<li><a href='/admin' onClick={this.restartSchedule.bind(this, event)}>Refaire l'horaire</a></li>);
     } else {
       return undefined;
     }
@@ -78,6 +97,7 @@ const AdminEventList = React.createClass({
               {this.renderMatchToEventLink(event)}
               {this.renderEventScheduleLink(event)}
               {this.renderAttributePointsLink(event)}
+              {this.renderEventRestartScheduleLink(event)}
             </ul></td>
           </tr>
         );

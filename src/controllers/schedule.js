@@ -40,3 +40,17 @@ exports.allocateTasks = function *() {
   this.body = { schedule : schedule };
 };
 
+exports.deleteSchedule = function *() {
+  var event = yield Event.findById(this.params.eventId).exec();
+  if (!event) {
+    this.throw("L'événement n'existe pas", 500);
+  }
+
+  yield Schedule.remove({event: event}).exec();
+
+  event.isClosed = false;
+  yield event.save();
+
+  this.status = 200;
+  this.body = { event : event };
+};

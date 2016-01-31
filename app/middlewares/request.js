@@ -7,6 +7,13 @@ exports.get = function (url, cb) {
   .end(authCallback(cb));
 };
 
+exports.del = function (url, cb) {
+  superagent.del(url)
+  .set("Accept", "application/json")
+  .set("Content-Type", "application/json")
+  .end(authCallback(cb));
+};
+
 exports.post = function(url, data, cb) {
   postPut("post", url, data, cb);
 };
