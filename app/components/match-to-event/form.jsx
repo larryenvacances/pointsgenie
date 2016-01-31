@@ -76,7 +76,7 @@ const MatchToEventForm = React.createClass({
     this.setState({hoursSelected: hoursSelected, tasksSelected: tasksSelected});
   },
 
-  renderSelectBox(task, users, time) {
+  renderSelectBox(task, users, time, className) {
     let options = users.map((user, index) => {
       return {value: user.id, label: `${user.totalPoints || 0} - ${user.name || user.cip} (${user.preferenceClassName})`, disabled: this.state.hoursSelected[time] && this.state.hoursSelected[time].indexOf(user.id) > -1};
     });
@@ -92,6 +92,9 @@ const MatchToEventForm = React.createClass({
           options={options}
           ref={time + "-" + task}
           onChange={this.onSelectBoxChange.bind(this, time + "-" + task)}
+          noResultsText="Aucune application"
+          menuBuffer={1000}
+          className={className}
         />
       </Col>
     );
@@ -106,7 +109,12 @@ const MatchToEventForm = React.createClass({
       let row = [];
       for (let i = 0; i < tasks.length; ++i) {
         let users = this.props.getHourTaskUserList(currDate.toISOString(), tasks[i]);
-        row.push(this.renderSelectBox(tasks[i], users, key));
+        let nextDate = dateHelper.addHours(dateHelper.clone(currDate), 1);
+        let className = undefined;
+        if(nextDate >= this.props.event.endDate.getTime() && i >= tasks.length - 2) {
+          className = "Last-row";
+        }
+        row.push(this.renderSelectBox(tasks[i], users, key, className));
       }
       rows.push(
         <Input key={currDate.getTime()} label={currDate.toLocaleString()} wrapperClassName="wrapper">
