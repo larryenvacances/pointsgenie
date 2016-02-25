@@ -1,5 +1,6 @@
 
 import React, { Component } from "react";
+import {Button} from "react-bootstrap";
 
 class FAQPage extends Component {
   static displayName = "FAQPage";
@@ -8,6 +9,9 @@ class FAQPage extends Component {
     return (
       <div className="faq">
         <h3>Foire aux questions</h3>
+        <h5>S.V.P veuillez consulter la charte pour avoir plus d'informations:</h5>
+        <Button bsStyle="primary" href="/charte-h16.pdf">Charte</Button>
+        <hr/>
 
         <h4>À quoi servent les Points Génie?</h4>
         <blockquote>Les Points Génie permettront, en bonne partie, de payer les différents frais reliés au bal pour la promotion finissante (Photo des finissants, album, voyage de la finissante, Jonc, etc.)</blockquote>

@@ -30,6 +30,12 @@ class AdminEventPage extends Component {
 
   render() {
     const isNew = this.context.router.getCurrentParams().id === undefined;
+    if (isNew) {
+      this.props.event.name = `5@8 ${Date.today().next().thursday().toString('d MMM yyyy')}`;
+      this.props.event.startDate = Date.today().next().thursday().add(17).hours();
+      this.props.event.endDate = Date.today().next().thursday().add(20).hours();
+      this.props.event.tasks = ['Sécurité', 'Caisse', 'Bouffe', 'Bière', 'Fort'];
+    }
 
     return (
       <div className="event-form">

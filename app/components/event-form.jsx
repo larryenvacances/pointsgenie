@@ -189,6 +189,10 @@ const EventForm = React.createClass({
   },
 
   render() {
+    let self = this;
+    if (!this.state.valid && !this.refs.name) {
+      setTimeout(function(){self.handleChange();}, 1000);
+    }
     return (
       <form onSubmit={this.props.onSubmit} role="form">
         {this.renderNameInput()}
