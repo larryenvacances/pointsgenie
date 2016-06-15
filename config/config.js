@@ -47,7 +47,7 @@ var specific = {
   },
   production: {
     app: {
-      port: process.env.PORT || 3000,
+      port: process.env.PORT || 5959,
       name: "Points genie",
       proxy: true,
       keys: ["super-secret-hurr-durr"]
