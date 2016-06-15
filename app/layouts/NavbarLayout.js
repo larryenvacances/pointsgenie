@@ -29,7 +29,7 @@ const NavbarLayout = React.createClass({
   renderBrand() {
     return (
       <Link to="index">
-        <span className="eng57logo"></span>
+        <span className="englogo"></span>
         Site des points génie
       </Link>
     );
