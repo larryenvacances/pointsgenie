@@ -29,6 +29,32 @@ exports.changePassword = function *() {
   this.body = { user: user };
 };
 
+
+// New function - test implementation
+exports.createUser = function*() {
+  if(!this.request.body) {
+    this.throw("Empty Request", 400)
+  }
+  var cip   = this.request.body.cip.toLowerCase();
+  var name  = this.request.body.name;
+  var email = this.request.body.email.toLowerCase();
+  // Check if cip format is OK
+  if (!cip.match(/[a-z]{4}[0-9]{4}/)) {
+    this.throw("Le cip est d'un format invalide");
+  }
+  // Check if cip already used
+  var user = yield User.findByCip(cip).exec();
+  if (user) {
+    this.throw("L'utilisateur existe deja", 500)
+  } else {
+    console.log("pas de prob")
+  }
+  // Create new user
+  var user = new User({'data.cip' : cip, 'data.name' : name, 'data.email' : email});
+  yield user.save();
+  this.body = { user: user };
+};
+
 exports.assignPromocard = function *() {
   var cip = this.params.cip.toLowerCase();
   if (!cip.match(/[a-z]{4}[0-9]{4}/)) {

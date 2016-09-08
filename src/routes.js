@@ -51,6 +51,8 @@ module.exports = function (app, passport) {
 
   adminRouter.post("/promocard/:cip", userController.assignPromocard);
 
+  adminRouter.post("/adduser/newuser", userController.createUser);
+
   adminRouter.get("/events", eventController.readAll);
   adminRouter.post("/events", eventController.create);
   adminRouter.get("/events/:id/applications", applicationController.readForEvent);

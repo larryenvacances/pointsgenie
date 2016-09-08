@@ -137,7 +137,7 @@ const AdminEventPointsAttribution = React.createClass({
       let user = this.state.users[id];
       usersToUpdate[id] = {
         points : user.hours * this.state.pointsRate,
-        reason: user.reason,
+        reason : user.reason,
       };
     };
 

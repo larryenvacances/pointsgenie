@@ -9,6 +9,7 @@ import AdminMatchToEventPage from "../app/pages-admin/AdminMatchToEventPage";
 import SchedulePage from "../app/pages-admin/event-schedule";
 import AttributionPage from "../app/pages-admin/event-points-attribution";
 import PromocardPage from "../app/pages-admin/promocard";
+import AddUserPage from "../app/pages-admin/adduser";
 import UsersPage from "../app/pages-admin/user-list";
 
 const adminRoutes = (
@@ -22,6 +23,7 @@ const adminRoutes = (
       <Route name="event-attribution" path="/events/:id/attribute" handler={AttributionPage} />
     </Route>
     <Route name="promocard" path="/promocard" handler={PromocardPage} />
+    <Route name="adduser" path="/adduser" handler={AddUserPage} />
     <Route name="list-users" path="/users" handler={UsersPage} />
   </Route>
 );

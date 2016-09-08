@@ -23,7 +23,7 @@ const AdminPromocard = React.createClass({
           return this.context.router.transitionTo("/users");
         }
         this.setState({
-          message: `La promocate de ${this.state.cip} a ajouté avec succès!`,
+          message: `La promocarte de ${this.state.cip} a ajouté avec succès!`,
           cip: null,
         })
       } else {

@@ -153,6 +153,19 @@ UserSchema.statics.fetchInfoFromLDAP = function *(cip, user) {
   fillInfosFromLDAP(ldapAnswer[0], user);
 };
 
+UserSchema.statics.createNewUser = function (profile) {
+  console.log('inside src/model')
+  console.log(profile)
+  return this.findOne({ "data.cip": profile.toLowerCase() });
+  //user = new this({ data: { cip: profile.cip} });
+  //user.data.email = profile.email
+  //user.data.name = profile.name
+  //user.meta.provider = "app-function";
+
+  //yield user.save();
+
+  //return user;
+};
 
 UserSchema.statics.findOrCreateUser = function *(profile, casRes) {
   var user = yield this.findOne({ "data.cip": profile.id }).exec();

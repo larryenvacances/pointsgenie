@@ -25,6 +25,12 @@ class UserApi extends ResourceApi {
     return this._doPost(URL).then(res => this._singleResourceResponse(res));
   }
 
+  // New code - Test
+  createUser(data) {
+    const URL = `/adduser/newuser`;
+    return this._doPost(URL, data).then(res => this._singleResourceResponse(res));
+  }
+
   assignPromocard(cip) {
     const URL = `/promocard/${cip}`;
     return this._doPost(URL).then(res => this._singleResourceResponse(res));

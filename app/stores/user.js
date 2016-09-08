@@ -23,8 +23,13 @@ var UserStore = {
         UserStore.notifyChange();
     }).catch(err => {console.log(err.message); console.log(err.stack);});
   },
-  addUser: function (user, done) {
-    throw new Error("Not Implemented");
+  addUser: function (data, done = function(){}) {
+    console.log(data)
+    userApi.createUser(data).then((user) => {
+      //_users[id] = user;
+      UserStore.notifyChange();
+      done();
+    }).catch(err => {console.log(err.message); console.log(err.stack);});
   },
   updateUser: function (user, done) {
     throw new Error("Not Implemented");
@@ -75,7 +80,6 @@ var UserStore = {
       done();
     });
   },
-
   batchAwardPoints: function (data, done = function(){}) {
     userApi.batchAwardPoints(data)
       .then((users) => {

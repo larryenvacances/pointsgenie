@@ -28,6 +28,7 @@ const AdminApplication = React.createClass({
             <li><Link to="list-events">Événements</Link></li>
             <li><Link to="create-event">Créer un événement</Link></li>
             <li><Link to="promocard">Attribuer une promocarte</Link></li>
+            <li><Link to="adduser">Ajouter un usager</Link></li>
             <li><Link to="list-users">Usagers</Link></li>
           </ul>
         </nav>
