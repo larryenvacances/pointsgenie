@@ -11,8 +11,6 @@ import request from "../middlewares/request";
 
 import connectToStore from "flummox/connect";
 
-import EventStore from "../stores/event.js"
-
 const IndexPage = React.createClass({
   displayName: "IndexPage",
 
@@ -20,57 +18,21 @@ const IndexPage = React.createClass({
     flux: PropTypes.object,
   },
 
-  getInitialState() {
-    return {
-      events: EventStore.getEvents(),
-    }
-  },
-
-  componentWillMount() {
-    EventStore.init();
-  },
-
-  componentDidMount() {
-    EventStore.addChangeListener(this.updateEvents);
-  },
-
-  componentWillUnmount() {
-    EventStores.removeChangeListener(this.updateEvents);
-  },
-
-  updateEvents() {
-    if(!this.isMounted()) {
-      return;
-    }
-    this.setState({
-      events: EventStore.getEvents(),
-    });
-  },
-
-  getNextEvent() {
-    let events = [2];
-    this.state.events.forEach(function(entry) {
-      events.push(entry)
-      console.log(entry);
-      });
-    return events
-  },
-
   render() {
-    let nextEvent = this.getNextEvent()
+    console.log(this.props.events)
     //const user = this.props.user || {};
     //const events = this.props.events || {};
     return (
       <div className= "index-page">
-         <NextSchedule event={nextEvent} />
+        <NextSchedule event={events} />
       </div>
     );
   }
 });
 
 const ConnectedEventList = connectToStore(IndexPage, {
-  auth: store => ({
-    user: store.getAuthenticatedUser(),
+  event: store => ({
+    events: store.getAllEvents(),
   })
 });
 
@@ -82,6 +44,3 @@ export default ConnectedEventList;
 //   auth: store => ({
 //    user: store.getAuthenticatedUser(),
 //  }),
-
-      //if (entry.isClosed == true & entry.isPointsAttributed == false) {
-      //  events.push(entry)

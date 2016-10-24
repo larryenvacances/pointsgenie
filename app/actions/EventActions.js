@@ -9,6 +9,7 @@ class EventActions extends Actions {
   }
 
   async fetchAllEvents() {
+    console.log("Check if in EventActions.js")
     return await eventApi.readAll();
   }
 
