@@ -65,7 +65,7 @@ const AdminAddUser = React.createClass({
     }
 
     if (state.email.match(/^$/)) {
-      state.isValidEmail = false;
+      state.isValidEmail = true;
     } else if(!state.email.match(/^[a-z0-9_\.\-]+@usherbrooke.ca$/i)) {
       state.isValidEmail = false;
       state.messageEmail = "L'adresse courriel est invalide. Utilisez une adresse @usherbrooke.ca";

@@ -46,9 +46,7 @@ exports.createUser = function*() {
   var user = yield User.findByCip(cip).exec();
   if (user) {
     this.throw("L'utilisateur existe deja", 500)
-  } else {
-    console.log("pas de prob")
-  }
+  } 
   // Create new user
   var user = new User({'data.cip' : cip, 'data.name' : name, 'data.email' : email});
   yield user.save();
@@ -78,7 +76,7 @@ exports.assignPromocard = function *() {
   }
 
   user.data.promocard = {
-    price: 50,
+    price: 0,
     date: new Date(),
   };
   yield user.save();

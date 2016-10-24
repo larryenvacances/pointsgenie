@@ -6,6 +6,7 @@ class User extends Model {
     cip: { type: String },
     name: { type: String },
     email: { type: String },
+    ringsize: { type : Number},
     isAdmin: { type: Boolean },
     hasPassword: { type: Boolean, private: true },
     created: { type: Date },
