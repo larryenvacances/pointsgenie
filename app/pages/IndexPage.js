@@ -35,7 +35,7 @@ const IndexPage = React.createClass({
   },
 
   componentWillUnmount() {
-    EventStores.removeChangeListener(this.updateEvents);
+    EventStore.removeChangeListener(this.updateEvents);
   },
 
   updateEvents() {
@@ -47,22 +47,29 @@ const IndexPage = React.createClass({
     });
   },
 
-  getNextEvent() {
-    let events = [2];
-    this.state.events.forEach(function(entry) {
-      events.push(entry)
-      console.log(entry);
+  getNextEvent(EventSource) {
+    let events = [];
+    EventSource.forEach(function(entry) {
+      if ( entry.startDate > Date.now() && entry.isClosed == true ) {
+        events.push(entry)
+        };
       });
     return events
   },
 
   render() {
-    let nextEvent = this.getNextEvent()
-    //const user = this.props.user || {};
-    //const events = this.props.events || {};
+    //const nextEvent = this.getNextEvent();
+    console.log('BEFORE THE SHIT');
+    var callback = function (err, data) {
+      if (err) return console.error(err);
+      console.log(data);
+      };
+    this.getNextEvent(this.state.event, callback);
+    console.log('AFTER THE SHIT');
+    const user = this.props.user || {};
     return (
       <div className= "index-page">
-         <NextSchedule event={nextEvent} />
+        <ApplyToEvent promocard={user.promocard} />
       </div>
     );
   }
@@ -76,12 +83,8 @@ const ConnectedEventList = connectToStore(IndexPage, {
 
 export default ConnectedEventList;
 
-
-//         <ApplyToEvent promocard={user.promocard} />
-//        <PointsLog log={user.points} />
-//   auth: store => ({
-//    user: store.getAuthenticatedUser(),
-//  }),
-
       //if (entry.isClosed == true & entry.isPointsAttributed == false) {
       //  events.push(entry)
+
+    /*  <NextSchedule event={nextEvent[0]} />
+        <NextSchedule event={nextEvent[1]} /> */

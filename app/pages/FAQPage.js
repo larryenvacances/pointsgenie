@@ -21,10 +21,10 @@ class FAQPage extends Component {
 
         <h4>Comment les personnes travaillant pour un évènement sont-elles choisies ?</h4>
         <blockquote>Sur toutes les personnes ayant appliquées, ce sont les personnes ayant le moins de Points Génie qui seront priorisées (à une différence de 3 points). Le choix se fera aussi en fonction des tâches préférées. 
-        Par contre, noter que les tâches préférées sont assignées en fonction des disponibilités des postes et non en fonction des points génie et que celles-ci ne sont que de nature informative.
+        Par contre, notez que les tâches préférées sont assignées en fonction des disponibilités des postes et non en fonction des points génie et que celles-ci ne sont que de nature informative.
         Pour plus d'information sur l'affichage des postes, vous référer à la charte de la 59e promotion.</blockquote>
         
-        <h4>Sortie de l’horaire d’un évènement?</h4>
+        <h4>Sortie de l’horaire d’un événement?</h4>
         <blockquote>Tous les horaires des évènements seront envoyés, 24 heures à l’avance, par courriel USherbrooke à toutes les personnes travaillant à l’évènement.</blockquote>
 
         <h4>À partir de quand est-il possible de postuler pour un évènement?</h4>

@@ -43,6 +43,8 @@ module.exports = function (app, passport) {
   securedRouter.post("/application", accessRights.hasPromocard, applicationController.create);
   securedRouter.put("/application/:id", accessRights.hasPromocard, applicationController.update);
 
+  securedRouter.get("/schedules/:eventId", scheduleController.getForEvent);
+
   /******** admin routes ********/
   adminRouter.use(accessRights.isConnected, accessRights.isAdmin);
   adminRouter.post("/users/awardpoints", userController.batchAwardPoints);
