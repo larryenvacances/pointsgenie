@@ -17,23 +17,59 @@ const AdminAddUser = React.createClass({
 
   onSubmit(e) {
   	e.preventDefault();
-  	UserStore.addUser(this.state, (err, res) => {
-  		if(!err) {
-  			 this.setState({
-  				messageEmail: `${this.state.cip} a été ajouté avec succès!`,
-  				cip : null,
-          name : null,
-          email : null
-  			});
-  			return this.context.router.transitionTo("/adduser");
-      } else { //TODO : Add Error Handling on /adduser
-        const message = err ? err.message : err.response ? err.response.body : "Erreur dans l'envoi du formulaire";
-        this.setState({
-          isValid: false,
-          message: message,
-        });
+    if (this.state.cip.split(',').length == 1) {
+      UserStore.addUser(this.state, (err, res) => {
+        if(!err) {
+          this.setState({
+            messageEmail: `${this.state.cip} a été ajouté avec succès!`,
+            cip : null,
+            name : null,
+            email : null
+          });
+          return this.context.router.transitionTo("/adduser");
+        } else {
+          const message = err ? err.message : err.response ? err.response.body : "Erreur dans l'envoi du formulaire";
+          this.setState({
+            isValid: false,
+            message: message,
+          });
+        }
+      });
+    } else {
+      const UserCIP = (this.state.cip.split(','));
+      const UserNAME = (this.state.name.split(','));
+      const UserSURNAME = (this.state.email.split(','));
+      const UserFULLNAME = this.combineName(UserNAME, UserSURNAME);
+      var i = 0
+      for (i = 0; i < UserNAME.length; i++){
+        var reqBod = {
+          cip: UserCIP[i],
+          name: UserFULLNAME[i],
+          email: ''
+        }; 
+        UserStore.addUser(reqBod);
       }
-    });
+      for (i = 0; i < UserNAME.length; i++){
+        var reqBod = {
+          cip: UserCIP[i],
+        }; 
+        UserStore.assignPromocard(reqBod.cip);
+      }
+      this.setState({
+        messageEmail: `Les usagers ont été ajoutés avec succès!`,
+        cip : null,
+        name : null,
+        email : null
+      });
+    }
+  },
+
+  combineName(UserName, UserSurname) {
+    var i = 0
+    for (i = 0; i < UserName.length; i++) {
+      UserName[i] = UserName[i] + ' ' + UserSurname[i];
+    }
+    return UserName
   },
 
   onChange() {
@@ -56,6 +92,9 @@ const AdminAddUser = React.createClass({
   		state.isValidCip = false;
   		state.messageCip = state.isValid;
   	}
+    if (state.cip.split(',').length > 1) {
+      state.isValidCip = true;
+    }
 
     if (state.name.match(/^$/)) {
       state.isValidName = false;
@@ -63,6 +102,10 @@ const AdminAddUser = React.createClass({
       state.isValidName = false;
       state.messageName = "Le nom est invalide. Change de nom!"
     }
+    if (state.name.split(',').length > 1) {
+      state.isValidName= true;
+    }
+
 
     if (state.email.match(/^$/)) {
       state.isValidEmail = true;
@@ -70,6 +113,10 @@ const AdminAddUser = React.createClass({
       state.isValidEmail = false;
       state.messageEmail = "L'adresse courriel est invalide. Utilisez une adresse @usherbrooke.ca";
     }
+    if (state.email.split(',').length > 1) {
+      state.isValidEmail = true;
+    }
+
 
     state.isValid = state.isValidCip && state.isValidName && state.isValidEmail;
 
