@@ -8,6 +8,7 @@ import UserStore from "../stores/user";
 import UserTable from "../components/user-list-table";
 import SearchBar from "../components/utils/search-bar";
 import AwardPointsModal from "../components/award-points-modal";
+import AddEmailModal from "../components/add-email-modal";
 
 const AdminUserList = React.createClass({
   displayName: "AdminUserList",
@@ -65,6 +66,12 @@ const AdminUserList = React.createClass({
     e.preventDefault();
     let user = UserStore.getUser(id);
     UserStore.awardPoints(id, data);
+  },
+
+  handleAddEmailSumbit(id, data, e) {
+    e.preventDefault();
+    let user = UserStore.getUser(id);
+    UserStore.addEmail(id, data)
   },
 
   handleFilterChange() {
@@ -148,6 +155,7 @@ const AdminUserList = React.createClass({
         {this.renderAssignPromocardLink(user)}
         {this.renderAwardPointsLink(user)}
         {this.renderMakeAdminLink(user)}
+        {this.renderAddEmailLink(user)}
       </ul>
     );
   },
@@ -176,6 +184,21 @@ const AdminUserList = React.createClass({
     } else {
       const boundOnClick = this.handleAssignPromocardClick.bind(this, user.cip);
       return (<li><a href="#" onClick={boundOnClick}>Attribuer une promocarte</a></li>);
+    }
+  },
+
+  renderAddEmailLink(user) {
+    if ( user.email == "" ) {
+      let modal = (<AddEmailModal user={user} onFormSubmit={this.handleAddEmailSumbit} /> );
+      return (
+        <li>
+          <ModalTrigger modal={modal}>
+            <a href="#" onClick={(e) => e.preventDefault()}>Ajouter un courriel</a>
+          </ModalTrigger>
+        </li>
+      );
+    } else {
+      return null;
     }
   },
 

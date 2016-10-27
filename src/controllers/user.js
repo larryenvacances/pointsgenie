@@ -131,6 +131,14 @@ exports.getCurrentUser = function *() {
   this.body = { user };
 };
 
+exports.addEmail = function *() {
+  let user = yield User.findById(this.params.id).exec();
+  user.data.email = this.request.body.email;
+
+  yield user.save();
+  this.body = { user: user };
+};
+
 exports.makeAdmin = function *() {
   const { id } = this.params;
   let user = yield User.findById(id).exec();

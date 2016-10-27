@@ -91,6 +91,15 @@ var UserStore = {
     }).catch(err => {console.log(err.message); console.log(err.stack);});
   },
 
+addEmail: function (id, data, done = function(){}) {
+ data.id = id;
+ userApi.addEmail(id, data).then((user) => {
+   _user[id] = user;
+   UserStore.notifyChange();
+   done();
+ });
+},
+
   fetchProfile: function (id, done = function(){}) {
     userApi.fetchProfile(id).then((user) => {
       _users[user.id] = user;
