@@ -1,5 +1,9 @@
 #History
 
+## 0.7.4
+- Added application time
+- Added add user page
+
 ## 0.7.3
 - Added obligatory hours support
 
