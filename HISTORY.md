@@ -1,6 +1,7 @@
 #History
 
-## 0.7.4
+## 0.8.0
+- Update to 59e
 - Added application time
 - Added add user page
 
