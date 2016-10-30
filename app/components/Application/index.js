@@ -16,6 +16,7 @@ const Application = React.createClass({
     tasks: PropTypes.arrayOf(PropTypes.string).isRequired,
     // Application
     preferredTask: PropTypes.string,
+    applicationTime: PropTypes.instanceOf(Date),
     availabilities: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
     // Others
     onSubmit: PropTypes.func.isRequired,
@@ -55,6 +56,7 @@ const Application = React.createClass({
   getFormData() {
     return {
       preferredTask: this.state.preferredTask,
+      applicationTime: Date.now(),
       availabilities: this.state.availabilities.map(d => new Date(d)),
     };
   },

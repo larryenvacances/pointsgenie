@@ -5,6 +5,7 @@ var ApplicationSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: "User"},
   event: { type: Schema.Types.ObjectId, ref: "Event" },
   preferredTask: { type: String, trim: true },
+  applicationTime: { type: Date, required: true },
   // TODO: validate that its between start/end time
   availabilities: [{ type: Date, required: true }],
 },{

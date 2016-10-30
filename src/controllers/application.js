@@ -38,6 +38,7 @@ exports.create = function *() {
     user: this.passport.user,
     event: event,
     preferredTask: application.preferredTask,
+    applicationTime: application.applicationTime,
     availabilities: application.availabilities,
   });
 

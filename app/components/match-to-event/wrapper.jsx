@@ -21,6 +21,7 @@ const MatchToEventWrapper = React.createClass({
     applications: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       user: PropTypes.string.isRequired,
+      applicationTime: PropTypes.instanceOf(Date).isRequired,
       preferredTask: PropTypes.string,
       availabilities: PropTypes.arrayOf(
         PropTypes.instanceOf(Date)

@@ -8,6 +8,7 @@ class Application extends Model {
     user: { type: String },
     event: { type: String },
     preferredTask: { type: String },
+    applicationTime: { type: Date },
     availabilities: [ { type: Date } ],
   };
 }
