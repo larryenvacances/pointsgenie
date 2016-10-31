@@ -36,7 +36,6 @@ const ComponentUserListTable = React.createClass({
         return (
           <tr key={user.id} className={user.isAdmin ? "success": undefined}
             title={`Créer le ${user.created.toLocaleDateString()}`}>
-            <td>{user.cip}</td>
             <td>{user.name}</td>
             <td>{user.email}</td>
             <td>{this.renderUserPointsLink(user)}</td>
@@ -86,7 +85,6 @@ const ComponentUserListTable = React.createClass({
       <Table bordered hover responsive striped>
         <thead>
           <tr>
-            <th>{this.renderSortableAnchor("Cip", "cip")}</th>
             <th>{this.renderSortableAnchor("Nom", "name")}</th>
             <th>Courriel</th>
             <th>{this.renderSortableAnchor(`Points (${this.renderTotalPoints()})`, "totalPoints")}</th>
