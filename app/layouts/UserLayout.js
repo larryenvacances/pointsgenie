@@ -29,6 +29,7 @@ class UserLayout extends Component {
             <NavItemLink to="profile">Profil</NavItemLink>
             <NavItemLink to="students">Liste des étudiants</NavItemLink>
             <NavItemLink to="faq">FAQ</NavItemLink>
+            <NavItemLink to="contact">Contact</NavItemLink>
           </Nav>
         </Col>
         <div className="transition-crop col-md-10" style={{ "minHeight": this.props.height }}>
