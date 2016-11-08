@@ -14,7 +14,7 @@ exports.create = function *() {
   }
   const { application, event } = this.request.body;
   if (!application || !application.availabilities || application.availabilities.length < 1) {
-    this.throw("Une postulance doit contenir au moins une disponibilité", 400);
+    this.throw("Une postulation doit contenir au moins une disponibilité", 400);
   }
 
   const applicationEvent = yield Event.findById(event).exec();
@@ -60,7 +60,7 @@ exports.update = function *() {
   }
   const { application } = this.request.body;
   if (!application || !application.availabilities || application.availabilities.length < 1) {
-    this.throw("Une postulance doit contenir au moins une disponibilité", 400);
+    this.throw("Une postulation doit contenir au moins une disponibilité", 400);
   }
 
   const applicationEvent = yield Event.findById(currentApplication.event).exec();

@@ -37,7 +37,7 @@ const ApplyToEvent = React.createClass({
       if (err) {
         state.alert = { style: "danger", message: `Erreur non-controlée: ${err.message}` };
       } else if (res.status === 200) {
-        state.alert = { style: "success", message: `Postulance acceptée!` };
+        state.alert = { style: "success", message: `Postulation acceptée!` };
       } else {
         state.alert = { style: "danger", message: res.body.error };
       }

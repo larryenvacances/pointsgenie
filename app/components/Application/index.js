@@ -71,7 +71,7 @@ const Application = React.createClass({
     }
     return (
       <Button type="submit" disabled={!this.isValid() || this.props.isSubmitting} bsStyle="success">
-        {this.props.isSubmitting ? "Postulance en cours...": "Postuler"}
+        {this.props.isSubmitting ? "Postulation en cours...": "Postuler"}
       </Button>
     );
   },

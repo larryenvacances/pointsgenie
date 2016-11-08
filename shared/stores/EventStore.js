@@ -84,9 +84,11 @@ class EventStore extends BaseStore {
 
   getAllEvents() {
     if (this.state.fetchedAllEvents) {
+      console.log("First branch")
       return Object.keys(this.state.events).map(id => this.state.events[id]);
     }
     if (!this.state.isLoading) {
+      console.log("Second branch")
       this.flux.getActions("event").fetchAllEvents();
     }
     return [];
@@ -142,6 +144,7 @@ class EventStore extends BaseStore {
   }
 
   handleBeginFetchAllEvents() {
+    console.log("in HandleBeginFetchAllEvents")
     this.handleBeginAsyncRequest();
     this.setState({
       fetchedAllEvents: false,
@@ -149,6 +152,7 @@ class EventStore extends BaseStore {
   }
 
   handleAllEvents(events = []) {
+    console.log("In handleAllEvents")
     this.handleFinishAsyncRequest();
     let eventsMap = {};
     events.forEach(event => {
@@ -173,6 +177,7 @@ class EventStore extends BaseStore {
   }
 
   handleFailedFetchAllEvents(err) {
+    console.log("In handleFailedFetchAllEvents")
     this.handleFinishAsyncRequest();
     this.setState({
       events: {},
