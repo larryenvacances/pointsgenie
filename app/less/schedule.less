@@ -17,6 +17,25 @@
   }
 }
 
+.schedule-wrapper-index {
+  border-top: 1px solid #cccccc;
+  margin-top: 10px;
+  table {
+    td, th {
+      &:not(:first-child) {
+        text-align: center;
+        li+li {
+          border-top: 1px @borderColor solid;
+        }
+      }
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+  }
+}
+
 .index-schedule {
   border-bottom: 1px solid #cccccc;
   margin-bottom: 10px;

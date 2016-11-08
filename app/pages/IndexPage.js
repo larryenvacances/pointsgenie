@@ -58,20 +58,44 @@ const IndexPage = React.createClass({
   },
 
   render() {
-    //const nextEvent = this.getNextEvent();
-    console.log('BEFORE THE SHIT');
-    var callback = function (err, data) {
-      if (err) return console.error(err);
-      console.log(data);
-      };
-    this.getNextEvent(this.state.event, callback);
-    console.log('AFTER THE SHIT');
+    let nextEvents = this.getNextEvent(this.state.events);
+    console.log(nextEvents)
     const user = this.props.user || {};
-    return (
-      <div className= "index-page">
-        <ApplyToEvent promocard={user.promocard} />
-      </div>
-    );
+    if (nextEvents.length == 3) {
+      return (
+        <div className= "index-page" id="index-page">
+          <ApplyToEvent promocard={user.promocard} />
+          <NextSchedule event={nextEvents[0]} />
+          <NextSchedule event={nextEvents[1]} />
+          <NextSchedule event={nextEvents[2]} />
+          <PointsLog log={user.points} />
+        </div>
+      );
+    } else if (nextEvents.length == 2) {
+      return (
+        <div className= "index-page" id="index-page">
+          <ApplyToEvent promocard={user.promocard} />
+          <NextSchedule event={nextEvents[0]} />
+          <NextSchedule event={nextEvents[1]} />
+          <PointsLog log={user.points} />
+        </div>
+      );
+    } else if (nextEvents.length == 1) {
+      return (
+        <div className= "index-page" id="index-page">
+          <ApplyToEvent promocard={user.promocard} />
+          <NextSchedule event={nextEvents[0]} />
+          <PointsLog log={user.points} />
+       </div>
+      );
+    } else {
+      return (
+        <div className= "index-page" id="index-page">
+          <ApplyToEvent promocard={user.promocard} />
+          <PointsLog log={user.points} />
+        </div>
+      );
+    }
   }
 });
 
@@ -82,9 +106,3 @@ const ConnectedEventList = connectToStore(IndexPage, {
 });
 
 export default ConnectedEventList;
-
-      //if (entry.isClosed == true & entry.isPointsAttributed == false) {
-      //  events.push(entry)
-
-    /*  <NextSchedule event={nextEvent[0]} />
-        <NextSchedule event={nextEvent[1]} /> */

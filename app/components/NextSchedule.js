@@ -145,7 +145,7 @@ const NextSchedule = React.createClass({
 
   render() {
     return (
-      <div className="schedule-wrapper">
+      <div className="schedule-wrapper-index">
         { this.state.schedule && this.state.users ? this.renderSchedule() : this.renderWaiting() }
       </div>
     );
@@ -153,27 +153,3 @@ const NextSchedule = React.createClass({
 });
 
 export default NextSchedule;
-
-
-/*  render() {
-    let myVar = this.props.event;
-    console.log("Next is myVar inside NextSchedule")
-    console.log(myVar)
-    return(
-       <div className="index-schedule">
-        <h3>Horaire du prochain événement <small>{myVar.name}</small></h3>
-        <Table striped bordered hover responsive>
-          <thead>
-            <tr>
-              <th>Événement</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            Des trucs
-          </tbody>
-        </Table>
-      </div>
-    );
-  }
-}); */
