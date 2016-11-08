@@ -59,7 +59,6 @@ const IndexPage = React.createClass({
 
   render() {
     let nextEvents = this.getNextEvent(this.state.events);
-    console.log(nextEvents)
     const user = this.props.user || {};
     if (nextEvents.length == 3) {
       return (

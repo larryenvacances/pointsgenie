@@ -88,6 +88,7 @@ const MatchToEventWrapper = React.createClass({
             // Add one point to make sure that even 0 points users are ranked.
             rank: (userPoints + 1 ) * modifier,
             preferenceClassName: preferenceClassName,
+            time: application.applicationTime,
           });
         };
       };
@@ -105,7 +106,7 @@ const MatchToEventWrapper = React.createClass({
 
     // sort ascending
     users.sort(function (a, b) {
-      return (a.rank - b.rank);
+      return (a.rank - b.rank || a.applicationTime - b.applicationTime);
     });
 
     // retrieve real user array
