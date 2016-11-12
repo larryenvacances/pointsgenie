@@ -57,32 +57,24 @@ const IndexPage = React.createClass({
     return events
   },
 
+  getNextOpenEvent(EventSource) {
+    let events = [];
+    EventSource.forEach(function(entry) {
+      if ( entry.startDate > Date.now() && entry.isClosed == false ) {
+        events.push(entry)
+        };
+      });
+    return events
+  },
+
   render() {
     let nextEvents = this.getNextEvent(this.state.events);
+    let nextOpenEvents = this.getNextOpenEvent(this.state.events);
     const user = this.props.user || {};
-    if (nextEvents.length == 3) {
+    if (nextEvents.length == 1) {
       return (
         <div className= "index-page" id="index-page">
-          <ApplyToEvent promocard={user.promocard} />
-          <NextSchedule event={nextEvents[0]} />
-          <NextSchedule event={nextEvents[1]} />
-          <NextSchedule event={nextEvents[2]} />
-          <PointsLog log={user.points} />
-        </div>
-      );
-    } else if (nextEvents.length == 2) {
-      return (
-        <div className= "index-page" id="index-page">
-          <ApplyToEvent promocard={user.promocard} />
-          <NextSchedule event={nextEvents[0]} />
-          <NextSchedule event={nextEvents[1]} />
-          <PointsLog log={user.points} />
-        </div>
-      );
-    } else if (nextEvents.length == 1) {
-      return (
-        <div className= "index-page" id="index-page">
-          <ApplyToEvent promocard={user.promocard} />
+          <ApplyToEvent promocard={user.promocard} manageEvent={this.state.events}  />
           <NextSchedule event={nextEvents[0]} />
           <PointsLog log={user.points} />
        </div>
@@ -90,7 +82,7 @@ const IndexPage = React.createClass({
     } else {
       return (
         <div className= "index-page" id="index-page">
-          <ApplyToEvent promocard={user.promocard} />
+          <ApplyToEvent promocard={user.promocard} manageEvent={this.state.events} />
           <PointsLog log={user.points} />
         </div>
       );

@@ -6,6 +6,8 @@ class Event extends Model {
     name: { type: String },
     startDate: { type: Date },
     endDate: { type: Date },
+    startApplication: { type: Date },
+    endApplication: { type: Date },
     obligatoryHours: { type: Number },
     tasks: [{ type: String }],
     isClosed: { type: Boolean },

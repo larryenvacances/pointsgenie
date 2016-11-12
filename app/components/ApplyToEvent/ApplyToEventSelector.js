@@ -15,6 +15,8 @@ const ApplyToEventSelector = React.createClass({
         endDate: PropTypes.instanceOf(Date).isRequired,
         obligatoryHours: PropTypes.number,
         tasks: PropTypes.arrayOf(PropTypes.string).isRequired,
+        startApplication: PropTypes.instanceOf(Date).isRequired,
+        endApplication: PropTypes.instanceOf(Date).isRequired,
       })
     ).isRequired,
     onFormSubmit: PropTypes.func.isRequired,

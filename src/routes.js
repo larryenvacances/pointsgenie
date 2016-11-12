@@ -39,6 +39,9 @@ module.exports = function (app, passport) {
   securedRouter.get("/events" , eventController.readAll);
   securedRouter.get("/events/all", accessRights.hasPromocard, eventController.readAll);
   securedRouter.get("/events/upcoming", accessRights.hasPromocard, eventController.getUpcomingEvents);
+  securedRouter.post("/events/openEvent/:id", accessRights.hasPromocard, eventController.openEvent);  
+  securedRouter.post("/events/closeEvent/:id", accessRights.hasPromocard, eventController.closeEvent);
+
   securedRouter.get("/events/:id", accessRights.hasPromocard, eventController.read);
 
   securedRouter.post("/application", accessRights.hasPromocard, applicationController.create);

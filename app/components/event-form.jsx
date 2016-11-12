@@ -41,6 +41,8 @@ const EventForm = React.createClass({
       name: props.event.name,
       startDate: props.event.startDate,
       endDate: props.event.endDate,
+      startApplication: props.event.startApplication,
+      endApplication: props.event.endApplication,
       obligatoryHours: props.event.obligatoryHours || 0,
       invalid: {},
     };
@@ -53,6 +55,8 @@ const EventForm = React.createClass({
       endDate: this.state.endDate,
       obligatoryHours: this.state.obligatoryHours,
       tasks: this.state.tasks.map(element => element.value),
+      startApplication: this.state.startApplication,
+      endApplication: this.state.endApplication,
     };
   },
 
@@ -96,6 +100,8 @@ const EventForm = React.createClass({
       name: this.refs.name.getValue(),
       startDate: this.refs.startDate.getValue(),
       endDate: this.refs.endDate.getValue(),
+      startApplication: this.refs.startApplication.getValue(),
+      endApplication: this.refs.endApplication.getValue(),
       obligatoryHours: obligatoryHours,
     };
     // chaining validation results in a more user friendly validation!
@@ -110,6 +116,14 @@ const EventForm = React.createClass({
       state.endDate.getTime() < (state.startDate.getTime() + 60)) {
       state.isValid = false;
       state.invalid.endDate = true;
+    } else if (!state.startApplication || isNaN(state.startApplication.getTime())) {
+      state.isValid = false;
+      state.invalid.startApplication = true;
+    } else if (!state.endApplication || isNaN(state.endApplication.getTime()) ||
+    state.endApplication.getTime() < (state.startApplication.getTime() + 2*24*60) ||
+    state.endApplication.getTime() > (state.startDate.getTime() - 24*60)) {
+      state.isValid = false;
+      state.invalid.endApplication = true;
     } else if (this.state.tasks.length < 1) {
       state.isValid = false;
       state.invalid.tasks = true;
@@ -180,6 +194,26 @@ const EventForm = React.createClass({
     );
   },
 
+  renderStartDateApplicationInput() {
+    const isValid = !this.state.invalid.startApplication
+    return (
+      <DateTimePicker ref="startApplication" label="Début de l'affichage" datePlaceholder="date de début"
+        date={this.state.startApplication} bsStyle={isValid ? null : "error" }
+        help={isValid ? null : "Veuillez entrer une date valide" }
+        onChange={this.handleChange} />
+    );
+  },
+
+  renderEndDateApplicationInput() {
+    const isValid = !this.state.invalid.endApplication
+    return (
+      <DateTimePicker ref="endApplication" label="Fin de l'affichage" datePlaceholder="date de début"
+        date={this.state.endApplication} bsStyle={isValid ? null : "error" }
+        help={isValid ? null : "La période d'application doit durer au moins 48 heures et fermer 24 heures avant l'événement" }
+        onChange={this.handleChange} />
+    );
+  },
+
   renderSubmitButton() {
     return (
       <Button type="submit" disabled={!this.state.isValid || this.props.isSubmitting} bsStyle="success">
@@ -200,6 +234,8 @@ const EventForm = React.createClass({
         {this.renderEndDateInput()}
         {this.renderObligatoryHoursCheckBox()}
         {this.renderTagListInput()}
+        {this.renderStartDateApplicationInput()}
+        {this.renderEndDateApplicationInput()}
         {this.renderSubmitButton()}
       </form>
     );

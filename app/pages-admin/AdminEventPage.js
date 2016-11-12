@@ -22,6 +22,7 @@ class AdminEventPage extends Component {
         event.id = id;
         promise = this.context.flux.getActions("event").updateEvent(event);
       } else {
+        event.isClosedToPublic = true;
         promise = this.context.flux.getActions("event").createEvent(event);
       }
       promise.then(() => this.context.router.transitionTo("/"));
@@ -35,6 +36,8 @@ class AdminEventPage extends Component {
       this.props.event.startDate = Date.today().next().thursday().add(17).hours();
       this.props.event.endDate = Date.today().next().thursday().add(20).hours();
       this.props.event.tasks = ['Sécurité', 'Caisse', 'Bouffe', 'Bière', 'Fort'];
+      this.props.event.startApplication = Date.today().next().sunday().add(18).hours();
+      this.props.event.endApplication = Date.today().next().tuesday().add(18).hours();
     }
 
     return (

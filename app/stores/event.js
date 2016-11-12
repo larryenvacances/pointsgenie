@@ -31,6 +31,20 @@ var EventStore = {
       listener();
     });
   },
+  openEvent: function (id, done = function(){}) {
+    eventApi.openEvent(id).then((event) => {
+      _events[event.id] = event;
+      EventStore.notifyChange();
+      done();
+    });
+  },
+  closeEvent: function (id, done = function(){}) {
+    eventApi.closeEvent(id).then((event) => {
+      _events[event.id] = event;
+      EventStore.notifyChange();
+      done();
+    });
+  },
   addChangeListener: function (listener) {
     _changeListeners.push(listener);
   },

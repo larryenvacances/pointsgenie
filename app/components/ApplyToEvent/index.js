@@ -6,10 +6,13 @@ import ApplyToEventSelector from "./ApplyToEventSelector";
 import Event from "../../models/Event";
 import request from "../../middlewares/request";
 
+import EventStore from "../../stores/event";
+
 const ApplyToEvent = React.createClass({
   displayName: "ApplyToEvent",
 
   contextTypes: {
+    router: PropTypes.func,
     flux: PropTypes.object,
   },
 
@@ -22,6 +25,30 @@ const ApplyToEvent = React.createClass({
 
   getInitialState() {
     return { events: [], };
+  },
+
+  updateEventsStatus() {
+    this.props.manageEvent.forEach(function(entry){
+      if (entry.isClosedToPublic == true && Date.now() > entry.startApplication.getTime() && Date.now() < entry.endApplication.getTime()) {
+        EventStore.openEvent(entry.id, (err, res) => {
+          if (err) {
+            console.log(err)
+          }
+        });
+      } else if (entry.isClosedToPublic == false && Date.now() < entry.startApplication.getTime()) {
+        EventStore.closeEvent(entry.id, (err, res) => {
+          if (err) {
+            console.log(err)
+          }
+        });
+      } else if (entry.isClosedToPublic == false && Date.now() > entry.endApplication.getTime()) {
+        EventStore.closeEvent(entry.id, (err, res) => {
+          if (err) {
+            console.log(err)
+          }
+        });
+      }
+    });
   },
 
   handleFormSubmit(e) {
@@ -50,6 +77,7 @@ const ApplyToEvent = React.createClass({
   },
 
   render() {
+    this.updateEventsStatus();
     if (this.props.promocard && this.props.promocard.date) {
       return (
         <ApplyToEventSelector ref="wrapper" eventList={this.props.events} isFormSubmitting={this.state.isFormSubmitting}

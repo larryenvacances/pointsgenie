@@ -5,6 +5,8 @@ var EventSchema = new Schema({
   name: { type: String, required: "{PATH} est requis", trim: true },
   startDate: { type: Date, required: "{PATH} est requis}" },
   endDate: { type: Date, required: "{PATH} est requis}" },
+  startApplication: { type: Date, required: "{PATH} est requis}" },
+  endApplication: { type: Date, required: "{PATH} est requis}" },
   tasks: [{ type: String, trim: true}],
   obligatoryHours: { type: Number, default: 0 },
   isClosed: { type: Boolean, default: false },

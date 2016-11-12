@@ -22,6 +22,26 @@ export default {
     this.body = { event: event };
   },
 
+  openEvent: function *() {
+    console.log('In ctr, openevent')
+    const { id } = this.params;
+    const event = yield Event.findById(id).exec();
+
+    event.isClosedToPublic = false;
+    yield event.save();
+    this.body = { event: event };
+  },
+
+  closeEvent: function *() {
+    console.log('In ctr, closeevent')
+    const { id } = this.params;
+    const event = yield Event.findById(id).exec();
+
+    event.isClosedToPublic = true;
+    yield event.save();
+    this.body = { event: event };
+  },
+
   read: function *() {
     const { id } = this.params;
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
