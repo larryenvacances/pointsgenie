@@ -118,11 +118,23 @@ const AdminUserList = React.createClass({
     return a.dispatchEvent(e);
   },
 
-  exportToCSV() {
-    let csv = "cip,nom,courriel,points,isPromocard,isAdmin\n";
+  generateListWithSeparator(s) {
+    let content = `cip${s}nom${s}courriel${s}points${s}isPromocard${s}isAdmin\n`;
     for(let user of this.state.users) {
-      csv += `${user.cip},${user.name},${user.email},${user.totalPoints},${user.promocard && user.promocard.date ? "true": "false"},${user.isAdmin}\n`;
+      content += `${user.cip}${s}${user.name}${s}${user.email}${s}${user.totalPoints}${s}${user.promocard && user.promocard.date ? "true": "false"}${s}${user.isAdmin}\n`;
     }
+
+    return content;
+  },
+
+  exportToSSV() {
+    const ssv = this.generateListWithSeparator(',');
+
+    this.download(ssv, 'pointsgenie.ssv', 'text/ssv');
+  },
+
+  exportToCSV() {
+    const csv = this.generateListWithSeparator(';');
 
     this.download(csv, 'pointsgenie.csv', 'text/csv');
   },
@@ -136,6 +148,9 @@ const AdminUserList = React.createClass({
           </div>
           <div className="col col-md-2 pull-right">
             <Button onClick={this.exportToCSV} bsStyle="success">Export to CSV</Button>
+          </div>
+          <div className="col col-md-2 pull-right">
+            <Button onClick={this.exportToSSV} bsStyle="success">Export to SSV</Button>
           </div>
         </div>
         <SearchBar ref="searchBar" filterText={this.state.filterText} onChange={this.handleFilterChange} />
