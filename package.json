@@ -13,12 +13,12 @@
     "url": "https://github.com/carapas/pointsgenie.git"
   },
   "scripts": {
-    "start": "NODE_ENV=development nodemon --harmony server.js",
-    "wstart": "set NODE_ENV=development&& nodemon --harmony server.js",
+    "start": "NODE_ENV=development nodemon server.js",
+    "wstart": "set NODE_ENV=development&& nodemon server.js",
     "test": "npm run build && npm run test-no-build -- --reporter dot",
-    "test-no-build": "NODE_ENV=test ./node_modules/.bin/mocha --harmony --reporter spec ./test/test-*.js",
-    "wtest-no-build": "set NODE_ENV=test&& call node_modules/.bin/mocha.cmd --harmony --reporter spec test/test-*.js",
-    "hot-dev-server": "webpack-dev-server --harmony --content-base public -ds --config webpack.config.js --hot --progress --colors --port 2992 --inline",
+    "test-no-build": "NODE_ENV=test ./node_modules/.bin/mocha --reporter spec ./test/test-*.js",
+    "wtest-no-build": "set NODE_ENV=test&& call node_modules/.bin/mocha.cmd --reporter spec test/test-*.js",
+    "hot-dev-server": "webpack-dev-server --content-base public -ds --config webpack.config.js --hot --progress --colors --port 2992 --inline",
     "build": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail",
     "wbuild": "set NODE_ENV=production&& webpack --config webpack.config.js --separate-stylesheet --optimize-minimize --progress --profile --colors --bail"
   },
