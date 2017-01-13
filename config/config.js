@@ -28,6 +28,9 @@ var specific = {
     mongo: {
       url: "mongodb://localhost/pointsgenie_dev",
     },
+    cas: {
+      proxyUrl: 'localhost:3000',
+    },
   },
   test: {
     app: {
@@ -44,6 +47,9 @@ var specific = {
       username: "dummy",
       password: "dummy",
     },
+    cas: {
+      proxyUrl: 'dummy',
+    },
   },
   production: {
     app: {
@@ -54,7 +60,10 @@ var specific = {
     },
     mongo: {
       url: "mongodb://localhost/pointsgenie",
-    }
+    },
+    cas: {
+      proxyUrl: process.env.CAS_PROXY_URL || 'promo59.ageg.ca',
+    },
   }
 };
 
