@@ -11,7 +11,7 @@ class ContactPage extends Component {
         <h3>Comité exécutif</h3>
         <p>
           <b>Président</b> - <a href="mailto:president@usherbrooke.ca">Gabriel Courtemanche</a> <br/>
-          <b>Vice-Présidente, Directrice Points Genie</b> - <a href="mailto:david.v.vachon@usherbrooke.ca">David Vachon</a> <br/>
+          <b>Vice-Présidente, Directrice Points Genie</b> - <a href="mailto:david.v.vachon@usherbrooke.ca">David V. Vachon</a> <br/>
           <b>Secrétaire</b> - <a href="mailto:sabrina.lambert@usherbrooke.ca">Sabrina Lambert</a> <br/>
           <b>Trésorier</b> - <a href="mailto:alexandre.turmel@usherbrooke.ca">Alexandre Turmel</a> <br/>
           <b>Webmestre</b> - <a href="mailto:laurent.huot2@usherbrooke.ca">Laurent Huot</a> <br/>
