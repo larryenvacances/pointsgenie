@@ -78,14 +78,14 @@ const ApplyToEvent = React.createClass({
 
   render() {
     this.updateEventsStatus();
-    if (this.props.promocard && this.props.promocard.date) {
+    //if (this.props.promocard && this.props.promocard.date) {
       return (
         <ApplyToEventSelector ref="wrapper" eventList={this.props.events} isFormSubmitting={this.state.isFormSubmitting}
           alert={this.state.alert} onAlertDismiss={this.handleAlertDismiss}
           onFormSubmit={this.handleFormSubmit}
         />
       );
-    } else {
+    /*} else {
       return (
         <div className="apply-event">
           <h3>Postuler pour un événement</h3>
@@ -96,7 +96,7 @@ const ApplyToEvent = React.createClass({
           {this.renderPossibleEventList()}
         </div>
       );
-    }
+    }*/
   },
 
   renderPossibleEventList() {
