@@ -96,7 +96,7 @@ exports.delete = function *() {
     this.throw("La postulation n'existe pas", 404);
   }
 
-  if ((!this.passport.user.meta.isAdmin) || (currentApplication.user != this.passport.user.id)) {
+  if (((currentApplication.user != this.passport.user.id) || !this.passport.user.meta.isAdmin)) {
     this.throw("Seul le postulant peut supprimer sa postulation.");
   }
 
