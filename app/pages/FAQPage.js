@@ -29,7 +29,7 @@ class FAQPage extends Component {
         Pour les autres évènements, le début de la phase de postulation sera annoncée par courriel USherbrooke.</blockquote>
       
         <h4>Qui dois-je contacter en cas de problème ou si j'ai des questions? </h4>
-        <blockquote>Pour ce qui est de la distribution des Points Génie, contacter Michelle Kinahan, Directrice Points Génie. Pour ce qui est en lien avec le fonctionnement du site web, contacter Laurent Huot, Webmestre. </blockquote>
+        <blockquote>Pour ce qui est de la distribution des Points Génie, contacter David V. Vachon, Directeur Points Génie. Pour ce qui est en lien avec le fonctionnement du site web, contacter Laurent Huot, Webmestre. </blockquote>
       </div>
     );
   }
