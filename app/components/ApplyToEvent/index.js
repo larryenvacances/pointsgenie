@@ -78,12 +78,25 @@ const ApplyToEvent = React.createClass({
 
   render() {
     this.updateEventsStatus();
+    //if (this.props.promocard && this.props.promocard.date) {
       return (
         <ApplyToEventSelector ref="wrapper" eventList={this.props.events} isFormSubmitting={this.state.isFormSubmitting}
           alert={this.state.alert} onAlertDismiss={this.handleAlertDismiss}
           onFormSubmit={this.handleFormSubmit}
         />
       );
+    /*} else {
+      return (
+        <div className="apply-event">
+          <h3>Postuler pour un événement</h3>
+          <p>
+            Vous devez avoir une promocarte afin de pouvoir postuler à un événement.
+            Veuillez contacter votre association étudiante
+          </p>
+          {this.renderPossibleEventList()}
+        </div>
+      );
+    }*/
   },
 
   renderPossibleEventList() {
