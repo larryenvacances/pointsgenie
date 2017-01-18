@@ -7,7 +7,7 @@ var views = require("co-views");
 var compress = require("koa-compress");
 var errorHandler = require("koa-error");
 var bodyParser = require("koa-bodyparser");
-var MongoStore = require("koa-sess-mongo-store");
+var MongoStore = require("koa-generic-session-mongo");
 
 var config = require("./config");
 
