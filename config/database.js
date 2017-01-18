@@ -16,6 +16,8 @@ module.exports = function (config) {
     console.log(err);
   });
 
+  mongoose.Promise = global.Promise;
+
   /**
    * Load the models
    */
