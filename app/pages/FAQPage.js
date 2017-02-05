@@ -10,7 +10,7 @@ class FAQPage extends Component {
       <div className="faq">
         <h3>Foire aux questions</h3>
         <h5>S.V.P veuillez consulter la charte pour avoir plus d'informations:</h5>
-        <Button bsStyle="primary" href="/charte-h16.pdf">Charte</Button>
+        <Button bsStyle="primary" href="/charte-a16.pdf">Charte</Button>
         <hr/>
 
         <h4>À quoi servent les Points Génie?</h4>

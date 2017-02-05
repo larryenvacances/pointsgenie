@@ -21,7 +21,7 @@ You can run tests using
 You can start the server in dev mode using two terminals
 
  - First: `npm run hot-dev-server`
- - Second: `npm start`
+ - Second: `LDAP_USER="uid=<CIP>" LDAP_PASSWORD="<PASSWORD>" npm start`
 
 
 For production, make sure all the files are built using
