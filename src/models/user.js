@@ -21,7 +21,7 @@ var UserSchema = new Schema({
     email: { type: String, lowercase: true },
     name: { type: String },
     concentration: { type: Number },
-    ringsize: { type: Number },
+    ringSize: { type: String },
     promocard: {
       price: { type: Number },
       date: { type: Date },
