@@ -47,7 +47,7 @@ const Jonc = React.createClass({
         };
 
     return <Input ref="ringSizeSelect" type="select" label="Taille du jonc" labelClassName="col-md-3" 
-    wrapperClassName="col-md-1" onChange={this.handleDropdownChange} value={this.state.ringSize}>
+    wrapperClassName="col-md-2" onChange={this.handleDropdownChange} value={this.state.ringSize}>
         {options.map(makeOption)}
       </Input>;
   },
