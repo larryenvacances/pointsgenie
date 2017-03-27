@@ -38,6 +38,7 @@ const ComponentUserListTable = React.createClass({
             title={`Créer le ${user.created.toLocaleDateString()}`}>
             <td>{user.name}</td>
             <td>{user.email}</td>
+            <td>{user.ringSize}</td>
             <td>{this.renderUserPointsLink(user)}</td>
             <td>
               { user.promocard && user.promocard.date ?
@@ -87,6 +88,7 @@ const ComponentUserListTable = React.createClass({
           <tr>
             <th>{this.renderSortableAnchor("Nom", "name")}</th>
             <th>Courriel</th>
+            <th>{this.renderSortableAnchor("Jonc", "ringSize")}</th>
             <th>{this.renderSortableAnchor(`Points (${this.renderTotalPoints()})`, "totalPoints")}</th>
             <th></th>
             <th>{/* Actions */}</th>
