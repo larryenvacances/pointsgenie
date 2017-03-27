@@ -128,13 +128,13 @@ const AdminUserList = React.createClass({
   },
 
   exportToSSV() {
-    const ssv = this.generateListWithSeparator(',');
+    const ssv = this.generateListWithSeparator(';');
 
     this.download(ssv, 'pointsgenie.ssv', 'text/ssv');
   },
 
   exportToCSV() {
-    const csv = this.generateListWithSeparator(';');
+    const csv = this.generateListWithSeparator(',');
 
     this.download(csv, 'pointsgenie.csv', 'text/csv');
   },
