@@ -119,9 +119,9 @@ const AdminUserList = React.createClass({
   },
 
   generateListWithSeparator(s) {
-    let content = `cip${s}nom${s}courriel${s}points${s}isPromocard${s}isAdmin\n`;
+    let content = `cip${s}nom${s}courriel${s}jonc${s}points${s}isPromocard${s}isAdmin\n`;
     for(let user of this.state.users) {
-      content += `${user.cip}${s}${user.name}${s}${user.email}${s}${user.totalPoints}${s}${user.promocard && user.promocard.date ? "true": "false"}${s}${user.isAdmin}\n`;
+      content += `${user.cip}${s}${user.name}${s}${user.email}${s}${user.ringSize}${s}${user.totalPoints}${s}${user.promocard && user.promocard.date ? "true": "false"}${s}${user.isAdmin}\n`;
     }
 
     return content;
