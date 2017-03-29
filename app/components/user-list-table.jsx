@@ -72,7 +72,7 @@ const ComponentUserListTable = React.createClass({
       return this.props.onSortClick(key);
     }
     let glyph;
-    if (key === this.props.orderBy) {
+    if y === this.props.orderBy) {
       glyph = (
         <Glyphicon className="pull-right"
           glyph={this.props.ascending ? "sort-by-attributes" : "sort-by-attributes-alt" }/>
