@@ -22,7 +22,7 @@ class SponsorshipPage extends Component {
         <blockquote>Lorsqu’un membre de la promotion procure une commandite, il doit transmettre l’information au comité exécutif actif. Ceci permettra au comité d’entreprendre les actions nécessaires pour ajouter la commandite dans le compte personnel du membre ainsi que dans le comte commun des membres et de respecter ses engagements envers les commandites.</blockquote>
       
         <h4>Date limite</h4>
-        <blockquote>Après le 12 septembre, l’album et les chandails de comité organisateur d’activité de financement ne seront plus disponibles pour l’ajout de logo de partenaire. Conséquemment, le niveau de visibilité sera moins important à la suite à cette date.</blockquote>
+        <blockquote>Après le 12 septembre, l’album et les chandails de comité organisateur d’activité de financement ne seront plus disponibles pour l’ajout de logo de partenaire. Conséquemment, le niveau de visibilité sera moins important à la suite de cette date.</blockquote>
       </div>
     );
   }
