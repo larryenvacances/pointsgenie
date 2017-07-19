@@ -12,17 +12,20 @@ const Promocard = React.createClass({
   },
 
   renderInner: function () {
-    if (this.props.promocard && this.props.promocard.date) {
-      return (
-        <form className="form-horizontal">
-          <Input type="static" label="Prix payé" labelClassName="col-md-3"
-            wrapperClassName="col-md-6" value={this.props.promocard.price + "$"} />
-          <Input type="static" label="Date" labelClassName="col-md-3"
-            wrapperClassName="col-md-6" value={this.props.promocard.date.toLocaleDateString()} />
-        </form>
-      );
+    var promocarteMessage = "Promocarte non-attribuée";
+    var promocarteDate = "";
+    if ("date" in this.props.promocard) {
+      promocarteMessage = "Promocarte attribuée";
+      promocarteDate = this.props.promocard.date.toLocaleDateString();
     }
-    return (<p> La promocarte n'a pas été achetée encore.</p>);
+    return (
+      <form className="form-horizontal">
+        <Input type="static" label="Statut" labelClassName="col-md-3"
+          wrapperClassName="col-md-6" value={promocarteMessage} />
+        <Input type="static" label="Date" labelClassName="col-md-3"
+          wrapperClassName="col-md-6" value={promocarteDate} />
+      </form>
+    );
   },
   render: function() {
     return (

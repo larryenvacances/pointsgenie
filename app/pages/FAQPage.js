@@ -16,6 +16,9 @@ class FAQPage extends Component {
         <h4>À quoi servent les Points Génie?</h4>
         <blockquote>Les Points Génie permettront, en bonne partie, de payer les différents frais reliés à la graduation pour la promotion finissante (Photo des finissants, album, voyage de la finissante, Jonc, etc.)</blockquote>
 
+        <h4>Pourquoi avons-nous une promo carte?</h4>
+        <blockquote>La promocarte permet aux étudiantes de la promotion finissante de postuler à des événements tels que les 5@8. Celle-ci est traditionnellement attibuée par le Directeur Point Génie.</blockquote>
+
         <h4>Combien vaut un Point Génie ?</h4>
         <blockquote>La valeur d’un Point Génie sera seulement connue au mois de novembre 2017, car la valeur du Point Génie est calculée en fonction du montant total accumulé par la promotion finissante ainsi que du nombre de points distribués.</blockquote>
 
