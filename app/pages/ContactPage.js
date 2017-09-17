@@ -13,7 +13,7 @@ class ContactPage extends Component {
           <b>Président</b> - <a href="mailto:president@usherbrooke.ca">Gabriel Courtemanche</a> <br/>
           <b>Vice-Président, Directeur Points Genie</b> - <a href="mailto:Christian-roch.faucher@usherbrooke.ca">Rocko Faucher</a> <br/>
           <b>Secrétaire</b> - <a href="mailto:vincent.marcotte2@usherbrooke.ca">Vincent Marcotte</a> <br/>
-          <b>Trésorier</b> - <a href="mailto:guy-samuel.fournier@ushrbrooke.ca">Guy-Samuel Fournier</a> <br/>
+          <b>Trésorier</b> - <a href="mailto:guy-samuel.fournier@usherbrooke.ca">Guy-Samuel Fournier</a> <br/>
           <b>Webmestre</b> - <a href="mailto:laurent.huot2@usherbrooke.ca">Laurent Huot</a> <br/>
           <b>Webmestre</b> - <a href="mailto:guillaume.paquet@usherbrooke.ca">Guillaume Paquet</a> <br/>
           <b>Directeurs 5@8</b> - <a href="mailto:5a8@ageg.ca">Alexandre Carbonneau et Gabrielle Fauteux Cormier	</a> <br/>
