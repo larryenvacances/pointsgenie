@@ -10,7 +10,7 @@ class ContactPage extends Component {
 
         <h3>Comité exécutif</h3>
         <p>
-          <b>Président</b> - <a href="mailto:president@usherbrooke.ca">Gabriel Courtemanche</a> <br/>
+          <b>Président</b> - <a href="mailto:gabriel.courtemanche@usherbrooke.ca">Gabriel Courtemanche</a> <br/>
           <b>Vice-Président, Directeur Points Genie</b> - <a href="mailto:Christian-roch.faucher@usherbrooke.ca">Rocko Faucher</a> <br/>
           <b>Secrétaire</b> - <a href="mailto:vincent.marcotte2@usherbrooke.ca">Vincent Marcotte</a> <br/>
           <b>Trésorier</b> - <a href="mailto:guy-samuel.fournier@usherbrooke.ca">Guy-Samuel Fournier</a> <br/>
