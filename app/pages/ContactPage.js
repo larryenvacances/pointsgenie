@@ -6,7 +6,7 @@ class ContactPage extends Component {
   render () {
     return (
       <div className="description">
-        <h2>Contact - Été 2017</h2>
+        <h2>Contact - Automne 2017</h2>
 
         <h3>Comité exécutif</h3>
         <p>
@@ -35,7 +35,7 @@ class ContactPage extends Component {
           <b>Sous-Directeur Fort</b> - <a href="mailto:Charles-etienne.godbout@usherbrooke.ca">Charles-Étienne Godbout</a> <br/>
           <b>Sous-Directeur Sécurité</b> - <a href="mailto:jordan.lussier@usherbrooke.ca">Jordan Lussier</a> <br/>
           <b>Sous-Directrice Sécurité</b> - <a href="mailto:Laurence.champagne@usherbrooke.ca">Laurence Beauvais</a> <br/>
-          <b>Sous-Directeur Radio</b> - <a href="mailto:guillaume.cote3@usherbrooke.ca">Guillaume Côté</a>
+          <b>Sous-Directeur Radio</b> - <a href="mailto:guillaume.cote3@usherbrooke.ca">Guillaume Côté</a> <br/>
           <b>Sous-Directeur Radio</b> - <a href="mailto:david.kabanza@usherbrooke.ca">David Kabanza</a>
         </p>
 
@@ -51,7 +51,7 @@ class ContactPage extends Component {
 
         <h3>Comité Souvenirs</h3>
         <p>
-          <b>Directrice</b> - <a href="mailto:marie-eve.mongeon@usherbrooke.ca">Catherine Thiffault</a> <br/>
+          <b>Directrice</b> - <a href="mailto:catherine.thiffault@usherbrooke.ca">Catherine Thiffault</a> <br/>
           <b>Membre</b> - <a href="mailto:jasmine.corriveau@usherbrooke.ca">Jasmine Corriveau</a><br/>
           <b>Membre</b> - <a href="mailto:emie.perreault@usherbrooke.ca">Emie Perreault</a><br/>
           <b>Membre</b> - <a href="mailto:marie-eve.mongeon@usherbrooke.ca">Marie-Ève Mongeon</a><br/>
