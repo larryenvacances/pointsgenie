@@ -31,6 +31,39 @@ var UserSchema = new Schema({
       reason: { type: String, required: true },
       points: { type: Number },
     }],
+    promInscription: {
+      firstname: { type: String },
+      lastname: { type: String },
+      phoneNumber: { type: String },
+      email: { type: String },
+      concentration: { type: String },
+      allergy: { type: String },
+      emergencyContact: {
+        name: { type: String },
+        phoneNumber: { type: String },
+        email: { type: String },
+      },
+      firstDay: {
+        participation: { type: Boolean, default: false },
+        occupation: { type: String },
+        accompanied: { type: Boolean, default: false },
+        accompanyingPersonName: { type: String },
+      },
+      secondDay: {
+        participation: { type: Boolean, default: false },
+        occupation: { type: String },
+        accompanied: { type: Boolean, default: false },
+        accompanyingPersonName: { type: String },
+      },
+      firstActivity: {
+        participation: { type: Boolean, default: false },
+        accompanied: { type: Boolean, default: false },
+      },
+      secondActivity: {
+        participation: { type: Boolean, default: false },
+        accompanied: { type: Boolean, default: false },
+      }
+    }
   },
   meta: {
     password: { type: String },

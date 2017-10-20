@@ -43,6 +43,19 @@ exports.setRingSize = function *() {
   this.body = { user: user };
 };
 
+exports.setPromInscription = function *() {
+  if(!this.request.body) {
+    this.throw("Le corps de la requête est vide", 400);
+  }
+
+  var user = this.passport.user;
+  
+  user.data.promInscription = this.request.body.promInscription;
+  
+  yield user.save();
+
+  this.body = { user: user };
+};
 
 // New function - test implementation
 exports.createUser = function*() {
