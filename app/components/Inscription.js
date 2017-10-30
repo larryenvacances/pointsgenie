@@ -104,6 +104,16 @@ const Inscription = React.createClass({
           labelClassName="col-md-6" wrapperClassName="col-md-12" onChange={this.handleChange} />
         <Input ref="nomAccompagnateur20" type="text" label="Nom de l'accompagnateur" labelClassName="col-sm-3" 
         wrapperClassName="col-sm-6" onChange={this.handleChange} name="secondDay.accompanyingPersonName" value={this.state.promInscription.secondDay.accompanyingPersonName} />
+        <h4>Ski le 20 décembre</h4>
+        <Input type="checkbox" label="Je participe" ref="ski20"
+          labelClassName="col-md-6" name="firstActivity.participation" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.firstActivity.participation}/>
+        <Input type="checkbox" label="Je serai accompagné" ref="accSki20"
+          labelClassName="col-md-6" name="firstActivity.accompanied" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.firstActivity.accompanied}/>
+        <h4>Mixologie 21 décembre</h4>
+        <Input type="checkbox" label="Je participe" ref="mixo21"
+          labelClassName="col-md-6" name="secondActivity.participation" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.secondActivity.participation}/>
+        <Input type="checkbox" label="Je serai accompagné" ref="accMixo20"
+          labelClassName="col-md-6" name="secondActivity.accompanied" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.secondActivity.accompanied}/>
       </div>
     );
   },
