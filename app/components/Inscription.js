@@ -21,6 +21,7 @@ const Inscription = React.createClass({
     const inscription = this.state.promInscription;
     _.set(inscription, event.target.name, event.target.type === "checkbox" ? event.target.checked : event.target.value);
     this.setState({promInscription: inscription});
+    this.calculatePromSubtotal(this.state.promInscription);
   },
 
   handleSubmit(event) {
@@ -41,6 +42,53 @@ const Inscription = React.createClass({
       }
       this.setState(state);
     });
+  },
+
+  calculatePromSubtotal(promInscription) {
+    const prixMixologie = 25;
+    const dayOneCost = this.calculateOneDayOccupationCost(promInscription.firstDay);
+    const dayTwoCost = this.calculateOneDayOccupationCost(promInscription.secondDay);
+    let promTotal = dayOneCost + dayTwoCost;
+
+    if (promInscription.secondActivity.participation) {
+      if (promInscription.secondActivity.accompanied) {
+        promTotal += prixMixologie * 2;
+      } else {
+        promTotal += prixMixologie;
+      }
+    }
+
+    this.setState({promInscription: {
+      ...this.state.promInscription,
+      cost: promTotal
+    }});
+  },
+
+  calculateOneDayOccupationCost(occupationInfo) {
+    let subtotal = 0;
+
+    if (occupationInfo.participation) {
+      switch(occupationInfo.occupation) {
+        case "Simple":
+          subtotal = 353.37;
+          break;
+        case "Double":
+          subtotal = 275.37;
+          break;
+        case "Triple":
+          subtotal = 258.37;
+          break;
+        case "Quadruple":
+          subtotal = 248.37;
+          break;
+      }
+
+      if (occupationInfo.accompanied === true) {
+        subtotal = subtotal * 2;
+      }
+    }
+
+    return subtotal;
   },
 
   renderInscriptionFields: function() {
@@ -76,7 +124,7 @@ const Inscription = React.createClass({
   },
 
   renderActivityFields: function() {
-    let options = ["", "Double", "Triple", "Quadruple"],
+    let options = ["", "Simple", "Double", "Triple", "Quadruple"],
     makeOption = function(option) {
       return <option key={options.indexOf(option)}>{option}</option>;
     };
@@ -129,6 +177,12 @@ const Inscription = React.createClass({
     return null;
   },
 
+  renderTotal() {
+    return (
+      <h4>TOTAL: {this.state.promInscription.cost}</h4>
+    );
+  },
+
   render: function() {
     return (
       <form className="form-horizontal" onSubmit={this.handleSubmit}>
@@ -138,6 +192,7 @@ const Inscription = React.createClass({
         <br/>
         <h3>Participation aux activités</h3>
         {this.renderActivityFields()}
+        {this.renderTotal()}
         {this.renderMessage()}
         <input type="submit" value="Submit" />
       </form>

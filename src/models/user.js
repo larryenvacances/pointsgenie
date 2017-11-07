@@ -32,6 +32,7 @@ var UserSchema = new Schema({
       points: { type: Number },
     }],
     promInscription: {
+      cost: { type: Number },
       firstname: { type: String, default: "" },
       lastname: { type: String, default: ""  },
       phoneNumber: { type: String, default: ""  },
