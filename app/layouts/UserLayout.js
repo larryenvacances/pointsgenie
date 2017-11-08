@@ -28,6 +28,7 @@ class UserLayout extends Component {
             <NavItemLink to="profile">Profil</NavItemLink>
             <NavItemLink to="students">Liste des étudiants</NavItemLink>
             <NavItemLink to="sponsorship">Commandites</NavItemLink>
+            <NavItemLink to="inscription">Inscription</NavItemLink>
             <NavItemLink to="faq">FAQ</NavItemLink>
             <NavItemLink to="contact">Contact</NavItemLink>
           </Nav>
