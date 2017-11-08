@@ -185,7 +185,7 @@ const Inscription = React.createClass({
   renderTotal() {
     return (
       <div style={{paddingBottom: 30}}>
-        <h4>TOTAL: {this.state.promInscription.cost}</h4>
+        <h4>TOTAL: {this.state.promInscription.cost} $</h4>
         Sujet à changer en fonction du nombre d'inscriptions
       </div>
     );
