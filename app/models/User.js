@@ -20,10 +20,7 @@ class User extends Model {
     } ],
     promInscription: { type: Object, shape: {
         cost: { type: Number },
-        firstname: { type: String },
-        lastname: { type: String },
         phoneNumber: { type: String },
-        email: { type: String },
         concentration: { type: String },
         allergy: { type: String },
         emergencyContact: { type: Object, shape: {

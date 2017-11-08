@@ -33,10 +33,7 @@ var UserSchema = new Schema({
     }],
     promInscription: {
       cost: { type: Number },
-      firstname: { type: String, default: "" },
-      lastname: { type: String, default: ""  },
       phoneNumber: { type: String, default: ""  },
-      email: { type: String, default: ""  },
       concentration: { type: String, default: ""  },
       allergy: { type: String, default: ""  },
       emergencyContact: {
