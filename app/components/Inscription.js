@@ -156,7 +156,7 @@ const Inscription = React.createClass({
         <Input ref="nomAccompagnateur20" type="text" label="Nom de l'accompagnateur" labelClassName="col-sm-3" 
         wrapperClassName="col-sm-6" onChange={this.handleChange} name="secondDay.accompanyingPersonName" value={this.state.promInscription.secondDay.accompanyingPersonName} />
       
-        <h4>Ski le 20 décembre</h4>
+        <h4>Ski le 20 décembre (payé séparément)</h4>
         <Input type="checkbox" label="Je participe" ref="ski20"
           labelClassName="col-sd-6" name="firstActivity.participation" onChange={this.handleChange} wrapperClassName="col-sm-offset-3 col-sm-6" checked={this.state.promInscription.firstActivity.participation}/>
         <Input type="checkbox" label="Je serai accompagné" ref="accSki20"
@@ -184,7 +184,10 @@ const Inscription = React.createClass({
 
   renderTotal() {
     return (
-      <h4>TOTAL: {this.state.promInscription.cost}</h4>
+      <div style={{paddingBottom: 30}}>
+        <h4>TOTAL: {this.state.promInscription.cost}</h4>
+        Sujet à changer en fonction du nombre d'inscriptions
+      </div>
     );
   },
 
