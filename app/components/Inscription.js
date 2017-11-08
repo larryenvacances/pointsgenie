@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import { Input, Button, Alert } from "react-bootstrap";
+import { Input, Button, Alert, Pager } from "react-bootstrap";
 import _ from "lodash";
 
 import request from "../middlewares/request";
@@ -112,13 +112,13 @@ const Inscription = React.createClass({
 
   renderContactUrgence: function() {
     return(
-      <div className="col-sm-12 form-inline">
-        <Input ref="allergiesInput" type="text" label="Nom" labelClassName="col-sm-2" 
-          wrapperClassName="col-sm-1" name="emergencyContact.name" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.name} />
-        <Input ref="allergiesInput" type="text" label="Tel" labelClassName="col-sm-2" 
-          wrapperClassName="col-sm-1" name="emergencyContact.phoneNumber" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.phoneNumber} />
+      <div>
+        <Input ref="allergiesInput" type="text" label="Nom" labelClassName="col-sm-3" 
+          wrapperClassName="col-sm-6" name="emergencyContact.name" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.name} />
+        <Input ref="allergiesInput" type="text" label="Numéro de téléphone" labelClassName="col-sm-3" 
+          wrapperClassName="col-sm-6" name="emergencyContact.phoneNumber" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.phoneNumber} />
         <Input ref="allergiesInput" type="text" label="Courriel" labelClassName="col-sm-3" 
-          wrapperClassName="col-sm-3" name="emergencyContact.email" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.email} />
+          wrapperClassName="col-sm-6" name="emergencyContact.email" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.email} />
       </div>
     );
   },
@@ -132,36 +132,41 @@ const Inscription = React.createClass({
       <div>
         <h4>20 décembre</h4>
         <Input type="checkbox" label="Je participe" ref="part20"
-          labelClassName="col-md-6" name="firstDay.participation" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.firstDay.participation}/>
+          wrapperClassName="col-sm-offset-3 col-sm-6" labelClassName="col-sm-6" name="firstDay.participation" onChange={this.handleChange} checked={this.state.promInscription.firstDay.participation}/>
         <Input ref="occupation20Select" type="select" label="Occupation" labelClassName="col-sm-3" 
           wrapperClassName="col-sm-6" name="firstDay.occupation" onChange={this.handleChange} value={this.state.promInscription.firstDay.occupation}>
             {options.map(makeOption)}
         </Input>
+
         <Input type="checkbox" label="Accompagné" ref="acc20" checked={this.state.promInscription.firstDay.accompanied}
-          onChange={this.handleChange} name="firstDay.accompanied" labelClassName="col-md-6" wrapperClassName="col-md-12"/>
+          onChange={this.handleChange} name="firstDay.accompanied" labelClassName="col-sm-6" wrapperClassName="col-sm-offset-3 col-sm-6"/>
         <Input ref="nomAccompagnateur20" type="text" label="Nom de l'accompagnateur" labelClassName="col-sm-3" 
         wrapperClassName="col-sm-6" name="firstDay.accompanyingPersonName" onChange={this.handleChange} value={this.state.promInscription.firstDay.accompanyingPersonName} />
+      
         <h4>21 décembre</h4>
         <Input type="checkbox" label="Je participe" ref="part21"
-          onChange={this.handleChange} name="secondDay.participation" checked={this.state.promInscription.secondDay.participation} labelClassName="col-md-6" wrapperClassName="col-md-12"/>
+          onChange={this.handleChange} name="secondDay.participation" checked={this.state.promInscription.secondDay.participation} labelClassName="col-sm-6" wrapperClassName="col-sm-offset-3 col-sm-6"/>
         <Input ref="occupation20Select" type="select" label="Occupation" labelClassName="col-sm-3" 
           wrapperClassName="col-sm-6" onChange={this.handleChange} name="secondDay.occupation" value={this.state.promInscription.secondDay.occupation}>
             {options.map(makeOption)}
         </Input>
+      
         <Input type="checkbox" label="Accompagné" ref="acc20" checked={this.state.promInscription.secondDay.accompanied} name="secondDay.accompanied"
-          labelClassName="col-md-6" wrapperClassName="col-md-12" onChange={this.handleChange} />
+          labelClassName="col-sm-6" wrapperClassName="col-sm-offset-3 col-sm-6" onChange={this.handleChange} />
         <Input ref="nomAccompagnateur20" type="text" label="Nom de l'accompagnateur" labelClassName="col-sm-3" 
         wrapperClassName="col-sm-6" onChange={this.handleChange} name="secondDay.accompanyingPersonName" value={this.state.promInscription.secondDay.accompanyingPersonName} />
+      
         <h4>Ski le 20 décembre</h4>
         <Input type="checkbox" label="Je participe" ref="ski20"
-          labelClassName="col-md-6" name="firstActivity.participation" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.firstActivity.participation}/>
+          labelClassName="col-sd-6" name="firstActivity.participation" onChange={this.handleChange} wrapperClassName="col-sm-offset-3 col-sm-6" checked={this.state.promInscription.firstActivity.participation}/>
         <Input type="checkbox" label="Je serai accompagné" ref="accSki20"
-          labelClassName="col-md-6" name="firstActivity.accompanied" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.firstActivity.accompanied}/>
+          labelClassName="col-sd-6" name="firstActivity.accompanied" onChange={this.handleChange} wrapperClassName="col-sm-offset-3 col-sm-6" checked={this.state.promInscription.firstActivity.accompanied}/>
+      
         <h4>Mixologie 21 décembre</h4>
         <Input type="checkbox" label="Je participe" ref="mixo21"
-          labelClassName="col-md-6" name="secondActivity.participation" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.secondActivity.participation}/>
+          labelClassName="col-sd-6" name="secondActivity.participation" onChange={this.handleChange} wrapperClassName="col-sm-offset-3 col-sm-6" checked={this.state.promInscription.secondActivity.participation}/>
         <Input type="checkbox" label="Je serai accompagné" ref="accMixo20"
-          labelClassName="col-md-6" name="secondActivity.accompanied" onChange={this.handleChange} wrapperClassName="col-md-12" checked={this.state.promInscription.secondActivity.accompanied}/>
+          labelClassName="col-sd-6" name="secondActivity.accompanied" onChange={this.handleChange} wrapperClassName="col-sm-offset-3 col-sm-6" checked={this.state.promInscription.secondActivity.accompanied}/>
       </div>
     );
   },
@@ -192,9 +197,13 @@ const Inscription = React.createClass({
         <br/>
         <h3>Participation aux activités</h3>
         {this.renderActivityFields()}
-        {this.renderTotal()}
-        {this.renderMessage()}
-        <input type="submit" value="Submit" />
+        <Pager>
+          {this.renderTotal()}
+          {this.renderMessage()}
+          <Button type="submit" bsStyle="primary">
+            Sauvegarder
+          </Button>
+        </Pager>
       </form>
     );
   },
