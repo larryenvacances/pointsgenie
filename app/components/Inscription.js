@@ -113,7 +113,7 @@ const Inscription = React.createClass({
   renderContactUrgence: function() {
     return(
       <div>
-        <Input ref="allergiesInput" type="text" label="Nom" labelClassName="col-sm-3" 
+        <Input ref="allergiesInput" type="text" label="Nom (ne doit pas être présent au bal)" labelClassName="col-sm-3" 
           wrapperClassName="col-sm-6" name="emergencyContact.name" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.name} />
         <Input ref="allergiesInput" type="text" label="Numéro de téléphone" labelClassName="col-sm-3" 
           wrapperClassName="col-sm-6" name="emergencyContact.phoneNumber" onChange={this.handleChange} value={this.state.promInscription.emergencyContact.phoneNumber} />
