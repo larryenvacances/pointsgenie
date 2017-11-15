@@ -60,7 +60,9 @@ class User extends Model {
         price: { type: Number },
         date: { type: Date },
       },
-    }
+    },
+    factureJonc: { type: Number },
+    factureVoyage: { type: Number }
   };
 }
 

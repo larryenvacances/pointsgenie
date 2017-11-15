@@ -32,7 +32,7 @@ var UserSchema = new Schema({
       points: { type: Number },
     }],
     promInscription: {
-      cost: { type: Number },
+      cost: { type: Number, default: 0 },
       phoneNumber: { type: String, default: ""  },
       concentration: { type: String, default: ""  },
       allergy: { type: String, default: ""  },
@@ -61,11 +61,13 @@ var UserSchema = new Schema({
         participation: { type: Boolean, default: false },
         accompanied: { type: Boolean, default: false },
       }
-    }
+    }, 
+    factureJonc: { type: Number, default: 0 }, 
+    factureVoyage: { type: Number, default: 0 }
   },
   meta: {
     password: { type: String },
-    provider: {type : String },
+    provider: { type : String },
     isAdmin: { type: Boolean, default: false }
   }
 }, {

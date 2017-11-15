@@ -11,6 +11,7 @@ import ProfilePage from "../app/pages/ProfilePage";
 import FAQPage from "../app/pages/FAQPage";
 import SponsorshipPage from "../app/pages/SponsorshipPage";
 import InscriptionPage from "../app/pages/InscriptionPage";
+import InvoicePage from "../app/pages/InvoicePage";
 import SignInPage from "../app/pages/SignInPage";
 import SignOutPage from "../app/pages/SignOutPage";
 import NotFoundPage from "../app/pages/NotFoundPage";
@@ -28,6 +29,7 @@ const routes = (
       <Route name="faq" path="faq" handler={FAQPage} />
       <Route name="sponsorship" path="sponsorship" handler={SponsorshipPage} />
       <Route name="inscription" path="inscription" handler={InscriptionPage} />
+      <Route name="invoice" path="invoice" handler={InvoicePage} />
       <Route name="applications" path="applications" handler={ApplicationsPage} />
       <Route name="students" path="students" handler={UserListPage} />
     </Route>
