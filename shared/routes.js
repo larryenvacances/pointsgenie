@@ -28,8 +28,8 @@ const routes = (
       <Route name="profile" path="profile" handler={ProfilePage} />
       <Route name="faq" path="faq" handler={FAQPage} />
       <Route name="sponsorship" path="sponsorship" handler={SponsorshipPage} />
-      <Route name="inscription" path="inscription" handler={InscriptionPage} />
       <Route name="invoice" path="invoice" handler={InvoicePage} />
+      {/* <Route name="inscription" path="inscription" handler={InscriptionPage} /> */}
       <Route name="applications" path="applications" handler={ApplicationsPage} />
       <Route name="students" path="students" handler={UserListPage} />
     </Route>
