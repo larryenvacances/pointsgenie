@@ -61,8 +61,8 @@ class User extends Model {
         date: { type: Date },
       },
     },
-    factureJonc: {type: Number },
-    factureVoyage: {type: Number }
+    factureJonc: { type: Number },
+    factureVoyage: { type: Number }
   };
 }
 

@@ -62,12 +62,12 @@ var UserSchema = new Schema({
         accompanied: { type: Boolean, default: false },
       }
     }, 
-    factureJonc: {type: Number, default: 0 }, 
-    factureVoyage: {type: Number, default: 0 }
+    factureJonc: { type: Number, default: 0 }, 
+    factureVoyage: { type: Number, default: 0 }
   },
   meta: {
     password: { type: String },
-    provider: {type : String },
+    provider: { type : String },
     isAdmin: { type: Boolean, default: false }
   }
 }, {
