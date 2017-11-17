@@ -18,7 +18,6 @@ const Invoice = React.createClass({
   },
 
   renderFacture: function() {
-    console.log(this.state.user);
     return(
       <div>
         <div>
