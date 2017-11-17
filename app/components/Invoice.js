@@ -18,6 +18,7 @@ const Invoice = React.createClass({
   },
 
   renderFacture: function() {
+    console.log(this.state.user);
     return(
       <div>
         <div>
@@ -29,13 +30,22 @@ const Invoice = React.createClass({
         <div>
           <h4>Bal: {this.state.user.promInscription.cost} $</h4>
         </div>
+        <div>
+          <h4>Album de finissants: {this.state.user.factureAlbum} $</h4>
+        </div>
+        <div>
+          <h4>Photos de finissants: {this.state.user.facturePhotos} $</h4>
+        </div>
+        <div>
+          <h4>Manteau: {this.state.user.factureManteau} $</h4>
+        </div>
       </div>
     );
   },
 
   renderTotal() {
     const user = this.state.user;
-    const total = user.promInscription.cost + user.factureVoyage + user.factureJonc;
+    const total = user.promInscription.cost + user.factureVoyage + user.factureJonc + user.factureAlbum + user.facturePhotos + user.factureManteau;
     return (
       <div style={{paddingBottom: 30}}>
         <h4>TOTAL: {total} $</h4>
