@@ -63,7 +63,14 @@ var UserSchema = new Schema({
       }
     }, 
     factureJonc: { type: Number, default: 0 }, 
-    factureVoyage: { type: Number, default: 0 }
+    factureVoyage: { type: Number, default: 0 },
+    factureAlbum: { type: Number, default: 0 },
+    factureManteau: { type: Number, default: 0 },
+    facturePhotos: { type: Number, default: 0 },
+    paid: { type: Object, shape: {
+        photo: { type: Number, default: 0 }
+      },
+    },
   },
   meta: {
     password: { type: String },
