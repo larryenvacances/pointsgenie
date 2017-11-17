@@ -39,6 +39,9 @@ const Invoice = React.createClass({
         <div>
           <h4>Manteau: {this.state.user.factureManteau} $</h4>
         </div>
+        <div>
+          <h4>Déjà payé (photos): {this.state.user.paid.photo} $</h4>
+        </div>
       </div>
     );
   },
